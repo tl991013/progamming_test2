@@ -7,7 +7,7 @@ extern map<string, bool>keyMap;
 class Keycell
 {
 public:
-	Keycell(string k = "", long long g = -1, int b = -1, int in = -1);
+	Keycell(string k = "", long long gId = -1, int bId = -1, int inDex = -1);
 	void setRandomKey();
 	string getKey();//new
 	int getBoxId();//new

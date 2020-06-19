@@ -4,6 +4,7 @@
 #include "Goods.h"
 #include "Box.h"
 #include "Key.h"
+#include<fstream>
 extern PostMan* postman[100];
 extern Client* client[100];
 extern Goods* goods[100];

@@ -1,6 +1,6 @@
 #include "Keycell.h"
 map<string, bool>keyMap;
-Keycell::Keycell(string k, long long g, int b, int in) :key(k), goodsId(g), boxId(b), index(in), next(NULL)
+Keycell::Keycell(string k, long long gId, int bId, int inDex) :key(k), goodsId(gId), boxId(bId), index(inDex), next(NULL)
 {
 }
 
