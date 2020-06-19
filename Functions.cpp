@@ -26,7 +26,7 @@ void getPostMan()
 		fio.close();
 	}
 	else
-		cout << "文件打开失败" << endl;
+		cout << "文件打开失败!" << endl;
 }
 
 void getClient()
