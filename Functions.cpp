@@ -26,7 +26,7 @@ void getPostMan()
 		fio.close();
 	}
 	else
-		cout << "�ļ���ʧ��" << endl;
+		cout << "文件打开失败" << endl;
 }
 
 void getClient()
@@ -46,7 +46,7 @@ void getClient()
 		fio.close();
 	}
 	else
-		cout << "�ļ���ʧ��" << endl;
+		cout << "文件打开失败" << endl;
 }
 
 void getGoods()
@@ -66,7 +66,7 @@ void getGoods()
 		fio.close();
 	}
 	else
-		cout << "�ļ���ʧ��" << endl;
+		cout << "文件打开失败" << endl;
 }
 void initial()
 {
