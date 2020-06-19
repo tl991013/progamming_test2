@@ -2,10 +2,10 @@
 #include<iostream>
 #include"Functions.h"
 using namespace std;
-PostMan* postman[100];
-Client* client[100];
-Goods* goods[100];
-Box* box[100];
+PostMan* postman[1000];
+Client* client[1000];
+Goods* goods[1000];
+Box* box[1000];
 Keys keys;
 void initial()
 {
