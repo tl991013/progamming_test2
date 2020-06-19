@@ -14,7 +14,6 @@ string Person::getName() const
 {
 	return name;
 }
-
 void Person::setId(string str)
 {
 	id = str;

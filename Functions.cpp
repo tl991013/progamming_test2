@@ -7,30 +7,71 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
-void initial()
+
+void getPostMan()
 {
-	FILE* fp;
-	if (fp = fopen("D:\\test.txt", "w"))
+	string a, b, c, e;
+	int d;
+	fstream fio("D:\\postman.txt", ios::in | ios::out);
+	if (fio.is_open())
 	{
-		cout << "打开文件成功" << endl;
-		fputs("hello", fp);
-		fclose(fp);
+		for (int i = 0; i < 100; i++)
+		{
+			fio >> a >> b >> c >> d >> e;
+			postman[i] = new PostMan(a, b, c, d, e);
+			if (fio.eof())
+				break;
+		}
+		fio.close();
 	}
 	else
-		cout << "打开文件失败" << endl;
-	postman[0] = new PostMan("123451", "110", "PostmanA", 0, "worker");
-	postman[1] = new PostMan("123452", "111", "PostmanB", 1, "manager");
+		cout << "文件打开失败" << endl;
+}
 
+void getClient()
+{
+	string a, b, c, d;
+	int e;
+	fstream fio("D:\\client.txt", ios::in | ios::out);
+	if (fio.is_open())
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			fio >> a >> b >> c >> d >> e;
+			client[i] = new Client(a, b, c, d, e);
+			if (fio.eof())
+				break;
+		}
+		fio.close();
+	}
+	else
+		cout << "文件打开失败" << endl;
+}
 
-	client[0] = new Client("123453", "119", "ClientC", "翻斗花园", 0);
-	client[1] = new Client("123454", "120", "ClientD", "龙华美食街", 1);
-	client[2] = new Client("123454", "121", "ClientE", "南京工业大学", 2);
-
-	goods[0] = new Goods("3", "4", 0, 0);
-	goods[1] = new Goods("4", "5", 0, 1);
-	goods[2] = new Goods("5", "3", 1, 2);
-	goods[3] = new Goods("4", "3", 2, 3);
-
+void getGoods()
+{
+	string a, b;
+	int c,d;
+	fstream fio("D:\\client.txt", ios::in | ios::out);
+	if (fio.is_open())
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			fio >> a >> b >> c >> d;
+			goods[i] = new Goods(a, b, c, d);
+			if (fio.eof())
+				break;
+		}
+		fio.close();
+	}
+	else
+		cout << "文件打开失败" << endl;
+}
+void initial()
+{
+	getPostMan();
+	getClient();
+	getGoods();
 	box[0] = new Box(1, 2);
 	box[1] = new Box(2, 2);
 
