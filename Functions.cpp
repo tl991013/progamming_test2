@@ -10,6 +10,7 @@ Keys keys;
 
 void getPostMan()
 {
+
 	string a, b, c, e;
 	int d;
 	fstream fio("D:\\postman.txt", ios::in | ios::out);
@@ -25,7 +26,7 @@ void getPostMan()
 		fio.close();
 	}
 	else
-		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
+		cout << "ÔøΩƒºÔøΩÔøΩÔøΩ ßÔøΩÔøΩ" << endl;
 }
 
 void getClient()
@@ -45,7 +46,7 @@ void getClient()
 		fio.close();
 	}
 	else
-		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
+		cout << "ÔøΩƒºÔøΩÔøΩÔøΩ ßÔøΩÔøΩ" << endl;
 }
 
 void getGoods()
@@ -65,7 +66,7 @@ void getGoods()
 		fio.close();
 	}
 	else
-		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
+		cout << "ÔøΩƒºÔøΩÔøΩÔøΩ ßÔøΩÔøΩ" << endl;
 }
 void initial()
 {
@@ -84,34 +85,34 @@ void initial()
 
 void Put()
 {
-	// ‰»Î”√ªß√˚∫Õ√‹¬Î£¨¬‘
+	//ËæìÂÖ•Áî®Êà∑ÂêçÂíåÂØÜÁ†ÅÔºåÁï•
 	int boxId;
 	int freeIndex;
 	long long goodsId;
-	cout << " ‰»Îµ±«∞øÏµ›πÒ±‡∫≈" << endl;
+	cout << "ËæìÂÖ•ÂΩìÂâçÂø´ÈÄíÊüúÁºñÂè∑" << endl;
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << " ‰»Î¥ÌŒÛ" << endl;
+		cout << "ËæìÂÖ•ÈîôËØØ" << endl;
 		return;
 	}
 	freeIndex = box[boxId]->getFreeBox();
 	if (freeIndex == -1)
 	{
-		cout << "¥ÀπÒ“—¬˙£¨«Îªª“ª∏ˆ" << endl;
+		cout << "Ê≠§ÊüúÂ∑≤Êª°ÔºåËØ∑Êç¢‰∏Ä‰∏™" << endl;
 		return;
 	}
 	box[boxId]->printBox(freeIndex);
-	cout << "«Î ‰»Î“™∑≈»ÎµƒøÏµ›±‡∫≈" << endl;
+	cout << "ËØ∑ËæìÂÖ•Ë¶ÅÊîæÂÖ•ÁöÑÂø´ÈÄíÁºñÂè∑" << endl;
 	cin >> goodsId;
 	if (goodsId < 0 || goodsId>3)
 	{
-		cout << "≤ª¥Ê‘⁄¥ÀøÏµ›£¨«Î÷ÿ–¬ ‰»Î" << endl;
+		cout << "‰∏çÂ≠òÂú®Ê≠§Âø´ÈÄíÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
 		return;
 	}
 	if (goods[goodsId]->getStation() != 0)
 	{
-		cout << "¥ÀøÏµ›“—∑≈»ÎªÚ“—»°≥ˆ£¨«Î÷ÿ–¬ ‰»Î" << endl;
+		cout << "Ê≠§Âø´ÈÄíÂ∑≤ÊîæÂÖ•ÊàñÂ∑≤ÂèñÂá∫ÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
 		return;
 	}
 	goods[goodsId]->putGoods();
@@ -119,7 +120,7 @@ void Put()
 	Keycell* temp = new Keycell("", goodsId, boxId, freeIndex);
 	temp->setRandomKey();
 	keys.insertKey(temp);
-	cout << "“—≥…π¶¥Ê»Î" << endl;
+	cout << "Â∑≤ÊàêÂäüÂ≠òÂÖ•" << endl;
 	temp->sendMessage();
 
 	return;
@@ -131,31 +132,31 @@ void Check()
 
 	string key;
 	Keycell temp;
-	cout << "«Î ‰»Î√‹¬Î" << endl;
+	cout << "ËØ∑ËæìÂÖ•ÂØÜÁ†Å" << endl;
 	cin >> key;
 	temp = keys.findKey(key);
 	if (temp.getKey() == "")
 	{
-		cout << " ‰»Î¥ÌŒÛ£¨≤ª¥Ê‘⁄¥À√‹¬Î£¨«ÎºÏ≤È «∑Ò ‰»Î¥ÌŒÛ" << endl;
+		cout << "ËæìÂÖ•ÈîôËØØÔºå‰∏çÂ≠òÂú®Ê≠§ÂØÜÁ†ÅÔºåËØ∑Ê£ÄÊü•ÊòØÂê¶ËæìÂÖ•ÈîôËØØ" << endl;
 		return;
 	}
 	box[temp.getBoxId()]->checkBox(temp.index);
 	goods[temp.getGoodsId()]->checkGoods();
-	cout << "»°º˛≥…π¶" << endl;
+	cout << "Âèñ‰ª∂ÊàêÂäü" << endl;
 
 }
 
 void checkBox()
 {
 	int boxId;
-	cout << " ‰»Îµ±«∞øÏµ›πÒ±‡∫≈" << endl;
+	cout << "ËæìÂÖ•ÂΩìÂâçÂø´ÈÄíÊüúÁºñÂè∑" << endl;
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << " ‰»Î¥ÌŒÛ" << endl;
+		cout << "ËæìÂÖ•ÈîôËØØ" << endl;
 		return;
 	}
-	cout << "øÏµ›πÒ π”√«Èøˆ»Áœ¬" << endl;
+	cout << "Âø´ÈÄíÊüú‰ΩøÁî®ÊÉÖÂÜµÂ¶Ç‰∏ã" << endl;
 	box[boxId]->printBoxStation();
 	return;
 }
@@ -163,11 +164,11 @@ void checkBox()
 void checkGoods()
 {
 	int goodsId;
-	cout << "«Î ‰»ÎøÏµ›±‡∫≈" << endl;
+	cout << "ËØ∑ËæìÂÖ•Âø´ÈÄíÁºñÂè∑" << endl;
 	cin >> goodsId;
 	if (goodsId < 0 || goodsId>3)
 	{
-		cout << "≤ª¥Ê‘⁄¥ÀøÏµ›£¨«Î÷ÿ–¬ ‰»Î" << endl;
+		cout << "‰∏çÂ≠òÂú®Ê≠§Âø´ÈÄíÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
 		return;
 	}
 	if (goods[goodsId]->getStation() == 2)
@@ -176,9 +177,9 @@ void checkGoods()
 
 		seconds = time(NULL);
 		long long a = seconds;
-		cout << "±‡∫≈Œ™" << goodsId
-			<< "µƒøÏµ›“—æ≠‘⁄" << a - goods[goodsId]->getChecktime()
-			<< "√Î«∞±ª»°◊ﬂ" << endl;
+		cout << "ÁºñÂè∑‰∏∫" << goodsId
+			<< "ÁöÑÂø´ÈÄíÂ∑≤ÁªèÂú®" << a - goods[goodsId]->getChecktime()
+			<< "ÁßíÂâçË¢´ÂèñËµ∞" << endl;
 		return;
 	}
 
@@ -190,7 +191,7 @@ void checkGoods()
 
 	else
 	{
-		cout << "¥ÀøÏµ›≤¢Œ¥µΩ¥ÔøÏµ›πÒ" << endl;
+		cout << "Ê≠§Âø´ÈÄíÂπ∂Êú™Âà∞ËææÂø´ÈÄíÊüú" << endl;
 		return;
 	}
 }
@@ -201,7 +202,7 @@ bool checkOvertime()
 	seconds = time(NULL);
 	long long a = seconds;
 	for (long long i = 0; i < 4; i++)
-		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//20sº¥π˝∆⁄ 
+		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//20sÂç≥ËøáÊúü 
 		{
 			keys.findGoods(i);
 			return true;
