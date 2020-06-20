@@ -2,9 +2,7 @@
 #include"Sign.h"
 int main()
 {
-	getPostMan();
-	getGoods();
-	getClient();
+	initial();
 	Menu();
 	//initial();
 	//int op;
