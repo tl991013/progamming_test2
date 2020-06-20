@@ -68,6 +68,38 @@ void getGoods()
 	else
 		cout << "文件打开失败" << endl;
 }
+void savePostman() {
+	ofstream fw;
+	fw.open("D:\\postman.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; postman[i] != NULL; i++) {
+			fw << postman[i]->getId() << "\t" << postman[i]->getTel() << "\t" << postman[i]->getName() << "\t"
+				<< postman[i]->getPostId() << "\t" << postman[i]->getPosition() << "\n";
+		}
+	}
+	fw.close();
+}
+
+void saveClient() {
+	ofstream fw;
+	fw.open("D:\\client.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; client[i] != NULL; i++) {
+			fw << client[i]->getId() << "\t" << client[i]->getTel() << "\t" << client[i]->getName() << "\t"
+				<< client[i]->getAddress() << "\t" << client[i]->getClintId() << "\n";
+		}
+	}
+}
+
+void saveGood() {
+	ofstream fw;
+	fw.open("D:\\goods.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; goods[i] != NULL; i++) {
+			fw << goods[i]->getpId() << "\t" << goods[i]->getrId() << "\t" << goods[i]->getStation() << "\n";
+		}
+	}
+}
 void initial()
 {
 	getPostMan();
