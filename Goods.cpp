@@ -64,7 +64,7 @@ long long Goods::getGoodsId() const
 	return goodsId;
 }
 
-Goods::Goods(string a, string b , int c , long long d) :putTime(0), checkTime(0)
+Goods::Goods(string a, string b, int c, long long d) :putTime(0), checkTime(0)
 {
 	setpId(a);
 	setrId(b);

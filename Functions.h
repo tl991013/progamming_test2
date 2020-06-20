@@ -15,4 +15,7 @@ void Put();
 void Check();
 void checkBox();
 void checkGoods();
-bool checkOvertime();
+void checkOvertime();
+void getPostMan();
+void getClient();
+void getGoods();
