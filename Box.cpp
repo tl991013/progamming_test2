@@ -28,7 +28,9 @@ int Box::getFreeBox() const
 
 void Box::printBox(int index) const
 {
-	printf("第%d行第%d列的柜子可放入\n", index / Boxw + 1, index % Boxw + 1);
+	cout << "第" << index / Boxw + 1
+		<< "行第" << index % Boxw + 1
+		<< "列的柜子可放入" << endl;
 }
 
 void Box::putBox(int index)
