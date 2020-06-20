@@ -145,6 +145,73 @@ void getKeycell() {
 	}
 }
 
+void creatNewPostman() {
+	string id1;// 身份证号
+	string tel1;// 电话 
+	string name1;// 姓名 
+	int postId1;//工号
+	string position1;//职位
+	string passWord1;//密码
+	int tt;//第几位快递员
+
+	cout << "请准确输入身份证号码：";
+	cin >> id1;
+	cout << "\n" << "请输入手机号码：";
+	cin >> tel1;
+	cout << "\n" << "请输入姓名：";
+	cin >> name1;
+	cout << "\n" << "请输入工号：";
+	cin >> postId1;
+	cout << "\n" << "请设置职位：";
+	cin >> position1;
+	cout << "\n" << "请设置密码：";
+	cin >> passWord1;
+	for (int i = 0; postman[i] != NULL; i++) {
+		if (postman[i]->getId() == id1 || postman[i]->getTel() == tel1 || postman[i]->getPostId == postId1) {
+			cout << "添加失败，请核对信息后再尝试！" << endl;
+			return;
+		}
+	}
+
+	for (int i = 0; postman[i] != NULL; i++) {
+		tt = i;
+	}
+	postman[tt] = new PostMan(id1, tel1, name1, postId1, position1, passWord1);
+}
+
+void createGoods() {
+	string pId1;//寄件人clintid
+	string rId1;//收件人clintid
+	int station1;//状态 0：派送中 1：在柜中 2：已取出
+	long long goodsId1;
+	int i;
+	cout << "请设置寄件人（id）：";
+	cin >> pId1;
+	cout << "\n请设置收件人（id）:";
+	cin >> rId1;
+	cout << "\n请设置无物品（id）：";
+	cin >> goodsId1;
+
+	for (i = 0; client[i] != NULL; i++) {
+		if (client[i]->getId() == pId1)
+			for (i = 0; client[i] != NULL; i++)
+				if (client[i]->getId == rId1)
+					i = -1;
+	}
+	for (i = 0; goods[i] != NULL; i++) {
+		if (goods[i]->getGoodsId() != goodsId1)
+			i = -1;
+		else
+			i = 1;
+	}
+	if (i == -1)
+	{
+		for (i = 0; goods[i] != NULL; i++) {}
+		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
+	}
+	else
+		cout << "包裹信息错误，请检查后重试";
+}
 
 void initial()
 {
