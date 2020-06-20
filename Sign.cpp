@@ -114,7 +114,8 @@ int Work() {
 		system("cls"); checkGoods(); break;
 	case 4:Sleep(1000);
 		system("cls");
-		checkOvertime(); break;
+		checkOvertime();
+		break;
 	default:cout << "输入错误，等待重新输入" << endl;
 		Sleep(1000);
 		system("cls");
