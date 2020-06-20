@@ -146,6 +146,7 @@
     <ClInclude Include="Keycell.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PostMan.h" />
+    <ClInclude Include="Sign.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PostMan.cpp" />
+    <ClCompile Include="Sign.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

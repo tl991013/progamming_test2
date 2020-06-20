@@ -11,23 +11,22 @@ Keycell* keycell[100];
 
 void getPostMan()
 {
-
-	string a, b, c, e;
+	string a, b, c, e, f;
 	int d;
 	fstream fio("D:\\postman.txt", ios::in | ios::out);
 	if (fio.is_open())
 	{
 		for (int i = 0; i < 100; i++)
 		{
-			fio >> a >> b >> c >> d >> e;
-			postman[i] = new PostMan(a, b, c, d, e);
+			fio >> a >> b >> c >> d >> e >> f;
+			postman[i] = new PostMan(a, b, c, d, e, f);
 			if (fio.eof())
 				break;
 		}
 		fio.close();
 	}
 	else
-		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•" << endl;
+		cout << "Œƒº˛¥Úø™ ß∞‹." << endl;
 }
 
 void getClient()
@@ -47,14 +46,14 @@ void getClient()
 		fio.close();
 	}
 	else
-		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•" << endl;
+		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
 }
 
 void getGoods()
 {
 	string a, b;
-	int c,d;
-	fstream fio("D:\\client.txt", ios::in | ios::out);
+	int c, d;
+	fstream fio("D:\\goods.txt", ios::in | ios::out);
 	if (fio.is_open())
 	{
 		for (int i = 0; i < 100; i++)
@@ -67,7 +66,7 @@ void getGoods()
 		fio.close();
 	}
 	else
-		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•" << endl;
+		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
 }
 void savePostman() {
 	ofstream fw;
@@ -153,34 +152,34 @@ void initial()
 
 void Put()
 {
-	//ËæìÂÖ•Áî®Êà∑ÂêçÂíåÂØÜÁ†ÅÔºåÁï•
+	// ‰»Î”√ªß√˚∫Õ√‹¬Î£¨¬‘
 	int boxId;
 	int freeIndex;
 	long long goodsId;
-	cout << "ËæìÂÖ•ÂΩìÂâçÂø´ÈÄíÊüúÁºñÂè∑" << endl;
+	cout << " ‰»Îµ±«∞øÏµ›πÒ±‡∫≈" << endl;
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << "ËæìÂÖ•ÈîôËØØ" << endl;
+		cout << " ‰»Î¥ÌŒÛ" << endl;
 		return;
 	}
 	freeIndex = box[boxId]->getFreeBox();
 	if (freeIndex == -1)
 	{
-		cout << "Ê≠§ÊüúÂ∑≤Êª°ÔºåËØ∑Êç¢‰∏Ä‰∏™" << endl;
+		cout << "¥ÀπÒ“—¬˙£¨«Îªª“ª∏ˆ" << endl;
 		return;
 	}
 	box[boxId]->printBox(freeIndex);
-	cout << "ËØ∑ËæìÂÖ•Ë¶ÅÊîæÂÖ•ÁöÑÂø´ÈÄíÁºñÂè∑" << endl;
+	cout << "«Î ‰»Î“™∑≈»ÎµƒøÏµ›±‡∫≈." << endl;
 	cin >> goodsId;
 	if (goodsId < 0 || goodsId>3)
 	{
-		cout << "‰∏çÂ≠òÂú®Ê≠§Âø´ÈÄíÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
+		cout << "≤ª¥Ê‘⁄¥ÀøÏµ›£¨«Î÷ÿ–¬ ‰»Î" << endl;
 		return;
 	}
 	if (goods[goodsId]->getStation() != 0)
 	{
-		cout << "Ê≠§Âø´ÈÄíÂ∑≤ÊîæÂÖ•ÊàñÂ∑≤ÂèñÂá∫ÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
+		cout << "¥ÀøÏµ›“—∑≈»ÎªÚ“—»°≥ˆ£¨«Î÷ÿ–¬ ‰»Î" << endl;
 		return;
 	}
 	goods[goodsId]->putGoods();
@@ -188,43 +187,40 @@ void Put()
 	Keycell* temp = new Keycell("", goodsId, boxId, freeIndex);
 	temp->setRandomKey();
 	keys.insertKey(temp);
-	cout << "Â∑≤ÊàêÂäüÂ≠òÂÖ•" << endl;
+	cout << "“—≥…π¶¥Ê»Î." << endl;
 	temp->sendMessage();
 
 	return;
-
 }
 
 void Check()
 {
-
 	string key;
 	Keycell temp;
-	cout << "ËØ∑ËæìÂÖ•ÂØÜÁ†Å" << endl;
+	cout << "«Î ‰»Î√‹¬Î" << endl;
 	cin >> key;
 	temp = keys.findKey(key);
 	if (temp.getKey() == "")
 	{
-		cout << "ËæìÂÖ•ÈîôËØØÔºå‰∏çÂ≠òÂú®Ê≠§ÂØÜÁ†ÅÔºåËØ∑Ê£ÄÊü•ÊòØÂê¶ËæìÂÖ•ÈîôËØØ" << endl;
+		cout << " ‰»Î¥ÌŒÛ£¨≤ª¥Ê‘⁄¥À√‹¬Î£¨«ÎºÏ≤È «∑Ò ‰»Î¥ÌŒÛ" << endl;
 		return;
 	}
 	box[temp.getBoxId()]->checkBox(temp.index);
 	goods[temp.getGoodsId()]->checkGoods();
-	cout << "Âèñ‰ª∂ÊàêÂäü" << endl;
-
+	cout << "»°º˛≥…π¶" << endl;
 }
 
 void checkBox()
 {
 	int boxId;
-	cout << "ËæìÂÖ•ÂΩìÂâçÂø´ÈÄíÊüúÁºñÂè∑" << endl;
+	cout << " ‰»Îµ±«∞øÏµ›πÒ±‡∫≈" << endl;
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << "ËæìÂÖ•ÈîôËØØ" << endl;
+		cout << " ‰»Î¥ÌŒÛ" << endl;
 		return;
 	}
-	cout << "Âø´ÈÄíÊüú‰ΩøÁî®ÊÉÖÂÜµÂ¶Ç‰∏ã" << endl;
+	cout << "øÏµ›πÒ π”√«Èøˆ»Áœ¬" << endl;
 	box[boxId]->printBoxStation();
 	return;
 }
@@ -232,11 +228,11 @@ void checkBox()
 void checkGoods()
 {
 	int goodsId;
-	cout << "ËØ∑ËæìÂÖ•Âø´ÈÄíÁºñÂè∑" << endl;
+	cout << "«Î ‰»ÎøÏµ›±‡∫≈" << endl;
 	cin >> goodsId;
 	if (goodsId < 0 || goodsId>3)
 	{
-		cout << "‰∏çÂ≠òÂú®Ê≠§Âø´ÈÄíÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
+		cout << "≤ª¥Ê‘⁄¥ÀøÏµ›£¨«Î÷ÿ–¬ ‰»Î" << endl;
 		return;
 	}
 	if (goods[goodsId]->getStation() == 2)
@@ -245,9 +241,9 @@ void checkGoods()
 
 		seconds = time(NULL);
 		long long a = seconds;
-		cout << "ÁºñÂè∑‰∏∫" << goodsId
-			<< "ÁöÑÂø´ÈÄíÂ∑≤ÁªèÂú®" << a - goods[goodsId]->getChecktime()
-			<< "ÁßíÂâçË¢´ÂèñËµ∞" << endl;
+		cout << "±‡∫≈Œ™" << goodsId
+			<< "µƒøÏµ›“—æ≠‘⁄" << a - goods[goodsId]->getChecktime()
+			<< "√Î«∞±ª»°◊ﬂ" << endl;
 		return;
 	}
 
@@ -259,21 +255,23 @@ void checkGoods()
 
 	else
 	{
-		cout << "Ê≠§Âø´ÈÄíÂπ∂Êú™Âà∞ËææÂø´ÈÄíÊüú" << endl;
+		cout << "¥ÀøÏµ›≤¢Œ¥µΩ¥ÔøÏµ›πÒ" << endl;
 		return;
 	}
 }
 
-bool checkOvertime()
+void checkOvertime()
 {
+	int i;
 	time_t seconds;
 	seconds = time(NULL);
 	long long a = seconds;
-	for (long long i = 0; i < 4; i++)
-		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//20sÂç≥ËøáÊúü 
+	cout << "≥¨ ±øÏµ›£∫" << endl;
+	for (i = 0; i < 100; i++)
+		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//10sº¥π˝∆⁄
 		{
-			keys.findGoods(i);
-			return true;
+			keys.findGoods(goods[i]->getGoodsId());
 		}
-	return false;
+	if (i == 100)
+		cout << "≤ª¥Ê‘⁄≥¨ ±øÏµ›" << endl;
 }
