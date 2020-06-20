@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include"Functions.h"
 using namespace std;
@@ -26,7 +26,7 @@ void getPostMan()
 		fio.close();
 	}
 	else
-		cout << "文件打开失败!" << endl;
+		cout << "文件打开失败" << endl;
 }
 
 void getClient()
