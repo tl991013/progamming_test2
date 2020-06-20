@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include"Functions.h"
 using namespace std;
@@ -128,7 +128,7 @@ void getKeycell() {
 		fr.close();
 	}
 	else
-		cout << "鏂囦欢鎵撳紑澶辫触" << endl;
+		cout << "文件打开失败" << endl;
 	for (int i = 0; keycell[i] != NULL; i++) {
 		keys.insertKey(keycell[i]);
 	}
