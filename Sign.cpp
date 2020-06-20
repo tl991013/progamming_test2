@@ -3,14 +3,17 @@
 //身份的选择：快递员和收件人
 int Menu() {
 	cout << "*****主菜单******" << endl << endl;
+	cout << "****0.退出*******" << endl << endl;
 	cout << "****1.快递员*****" << endl << endl;
-	cout << "****2.收件人*****" << endl << endl;
+	cout << "****2.收件*****" << endl << endl;
 	cout << "*****************" << endl << endl;
 	int a;
 	cout << "请选择：";
 	cin >> a;
 	switch (a)
 	{
+	case 0:exit(0);
+		break;
 	case 1:Sleep(1000);
 		system("cls");
 		PostSign(); break;
@@ -30,54 +33,54 @@ int PostSign() {
 	int id, i;
 	int num;
 	string password;
-	while (true) {
-		cout << "*****快递员登录界面*****" << endl << endl;
-		cout << "*****0.退出*************" << endl << endl;
-		cout << "*****1.输入账号密码*****" << endl << endl;
-		cout << "************************" << endl << endl;
-		cout << "输入序号:";
-		cin >> num;
-		switch (num) {
-		case 0:Sleep(1000);
-			system("cls");
-			Menu(); break;
-		case 1:Sleep(1000);
-			system("cls");
-			cout << "***输入账号密码界面***" << endl << endl;
-			cout << "******请输入账号******" << endl;
-			cin >> id;
-			cout << endl;
-			cout << "******请输入密码******" << endl;
-			cin >> password;
-			cout << endl;
-			break;
-		default:cout << "*输入错误,等待重新输入选项*" << endl;
-			Sleep(1000);
-			system("cls");
-			break;
-		}
-		for (i = 0; i < 100; i++) {
-			if (id == postman[i]->getPostId()) {
-				if (password == postman[i]->getPassWord()) {
-					cout << "*登录成功*" << endl;
-					Sleep(1000);
-					system("cls");
-					Work();
-				}
-				else {
-					cout << "*密码错误,重新登录*" << endl;
-					Sleep(1000);
-					system("cls");
-					break;
-				}
+	cout << "*****快递员登录界面*****" << endl << endl;
+	cout << "*****0.退出*************" << endl << endl;
+	cout << "*****1.输入账号密码*****" << endl << endl;
+	cout << "************************" << endl << endl;
+	cout << "输入序号:";
+	cin >> num;
+	switch (num) {
+	case 0:Sleep(1000);
+		system("cls");
+		Menu(); break;
+	case 1:Sleep(1000);
+		system("cls");
+		cout << "***输入账号密码界面***" << endl << endl;
+		cout << "******请输入账号******" << endl;
+		cin >> id;
+		cout << endl;
+		cout << "******请输入密码******" << endl;
+		cin >> password;
+		cout << endl;
+		break;
+	default:cout << "*输入错误,等待重新输入选项*" << endl;
+		Sleep(1000);
+		system("cls");
+		PostSign();
+		break;
+	}
+	for (i = 0; i < 100; i++) {
+		if (id == postman[i]->getPostId()) {
+			if (password == postman[i]->getPassWord()) {
+				cout << "*登录成功*" << endl;
+				Sleep(1000);
+				system("cls");
+				Work();
+			}
+			else {
+				cout << "*密码错误,重新登录*" << endl;
+				Sleep(1000);
+				system("cls");
+				break;
 			}
 		}
-		if (i == 100) {
-			cout << "*账号不存在,请等待重新输入选项*" << endl;
-			Sleep(1000);
-			system("cls");
-		}
 	}
+	if (i == 100) {
+		cout << "*账号不存在,请等待重新输入选项*" << endl;
+		Sleep(1000);
+		system("cls");
+	}
+	return 0;
 }
 
 int ReceSign() {
