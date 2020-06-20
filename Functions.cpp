@@ -7,6 +7,7 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
+Keycell* keycell[100];
 
 void getPostMan()
 {
@@ -68,6 +69,73 @@ void getGoods()
 	else
 		cout << "文件打开失败" << endl;
 }
+void savePostman() {
+	ofstream fw;
+	fw.open("D:\\postman.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; postman[i] != NULL; i++) {
+			fw << postman[i]->getId() << "\t" << postman[i]->getTel() << "\t" << postman[i]->getName() << "\t"
+				<< postman[i]->getPostId() << "\t" << postman[i]->getPosition() << "\n";
+		}
+	}
+	fw.close();
+}
+
+void saveClient() {
+	ofstream fw;
+	fw.open("D:\\client.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; client[i] != NULL; i++) {
+			fw << client[i]->getId() << "\t" << client[i]->getTel() << "\t" << client[i]->getName() << "\t"
+				<< client[i]->getAddress() << "\t" << client[i]->getClintId() << "\n";
+		}
+	}
+}
+
+void saveGood() {
+	ofstream fw;
+	fw.open("D:\\goods.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; goods[i] != NULL; i++) {
+			fw << goods[i]->getpId() << "\t" << goods[i]->getrId() << "\t" << goods[i]->getStation() << "\n";
+		}
+	}
+}
+
+void saveKey() {
+	ofstream fw;
+	fw.open("D:\\key.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; keycell[i] == NULL; i++) {
+			fw << keycell[i]->getKey() << "\t" << keycell[i]->getGoodsId() << "\t" << keycell[i]->getBoxId() << "\n";
+		}
+	}
+	fw.close();
+}
+
+void getKeycell() {
+	string a;
+	long long b;
+	int c;
+	ifstream fr;
+	fr.open("key.txt", ios::in);
+	if (fr.is_open()) {
+		for (int i = 0; i < 100; i++) {
+			fr >> a >> b >> c;
+			keycell[i] = new Keycell(a, b, c, -1);
+			if (fr.eof())
+				break;
+		}
+		fr.close();
+	}
+	else
+		cout << "文件打开失败" << endl;
+	for (int i = 0; keycell[i] != NULL; i++) {
+		keys.insertKey(keycell[i]);
+	}
+}
+
+
 void initial()
 {
 	getPostMan();
