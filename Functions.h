@@ -22,6 +22,9 @@ void saveClient();
 void saveGood();
 void saveKey();
 
+void creatNewPostman();
+void createGoods();
+
 void initial();
 void Put();
 void Check();
