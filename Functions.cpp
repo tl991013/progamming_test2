@@ -191,27 +191,28 @@ void createGoods() {
 	cin >> rId1;
 	cout << "\n请设置无物品（id）：";
 	cin >> goodsId1;
-	int record = 1;//记录
-	int record2 = 1;
+	int record1 = 1;//记录寄件人是否存在
+	int record2 = 1;//记录收件人是否存在
+	int record3 = 1;//记录快递是否存在
 	for (i = 0; client[i] != NULL; i++) {
 		if (client[i]->getId() == pId1) {
-			for (j = 0; client[j] != NULL; j++) {
-				if (client[j]->getId() == rId1) {
-					record = -1;
-					break;
-				}
-			}
-		}
-		if (record == -1)
+			record1 = -1;
 			break;
+		}
 	}
-	for (i = 0; goods[i] != NULL; i++) {
-		if (goods[i]->getGoodsId() == goodsId1) {
+	for (j = 0; client[j] != NULL; j++) {
+		if (client[j]->getId() == rId1) {
 			record2 = -1;
 			break;
 		}
 	}
-	if (record == -1 && record2 == -1)
+	for (i = 0; goods[i] != NULL; i++) {
+		if (goods[i]->getGoodsId() == goodsId1) {
+			record3 = -1;
+			break;
+		}
+	}
+	if (record1 == -1 && record2 == -1 && record3 == -1)
 	{
 		for (i = 0; goods[i] != NULL; i++) {}
 		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
