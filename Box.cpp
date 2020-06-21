@@ -43,13 +43,30 @@ void Box::checkBox(int index)
 	box[index] = 0;
 }
 
+
 void Box::printBoxStation()
 {
 	//画出3*3的方格
+	cout << endl;
+	cout << "\t\t\t\t\t----------------------" << endl << endl;
 	for (int i = 0; i < Boxh; i++)
 	{
-		for (int j = 0; j < Boxw; j++)
-			cout << box[i * Boxw + j] << "\t";
-		cout << endl;
+		int count = 0;
+		cout << "\t\t\t\t\t";
+		for (int j = 0; j < Boxw; j++) {
+			if (box[i * Boxw + j]) {
+				cout << "| Y |";
+				count++;
+			}
+			else {
+				cout << "| N |";
+				count++;
+			}
+			if (count % 3 != 0)
+				cout << "\t";
+			if (count % 3 == 0)
+				cout << endl << endl;
+		}
 	}
+	cout << "\t\t\t\t\t----------------------" << endl << endl;
 }

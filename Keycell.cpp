@@ -9,10 +9,20 @@ void Keycell::setRandomKey()
 {
 	srand((int)time(0));
 	char str[10];
+	string s1;
+	long long t1;
+	int t2;
+	int t3;
 	fstream fio;
-	fio.open("D:\\key.txt", ios::in | ios::out);
-
-		
+	if (fio.is_open())
+	{
+		do
+		{
+			fio.open("D:\\key.txt", ios::in | ios::out);
+			fio >> s1 >> t1 >> t2 >> t3;
+			keyMap[s1] = 1;
+		} while (!fio.eof());
+	}
 	while (1)
 	{
 		for (int i = 0; i < 6; ++i)

@@ -217,6 +217,8 @@ void createGoods() {
 	{
 		for (i = 0; goods[i] != NULL; i++) {}
 		goods[i] = new Goods(pName1, rName1, 0, goodsId1);
+		cout << "包裹成功储存" << endl;
+		system("pause");
 	}
 	else
 		cout << "包裹信息错误，请检查后重试";
@@ -300,14 +302,18 @@ void Check()
 void checkBox()
 {
 	int boxId;
-	cout << "输入当前快递柜编号" << endl;
+	cout << endl;
+	cout << "\t\t\t\t\t ----------------------------" << endl;
+	cout << "\t\t\t\t\t|*****输入当前快递柜编号*****|" << endl;
+	cout << "\t\t\t\t\t\t\t";
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << "输入错误" << endl;
+		cout << "\t\t\t\t\t\t|*输入错误*\t|" << endl;
 		return;
 	}
-	cout << "快递柜使用情况如下" << endl;
+	cout << "\t\t\t\t\t|*****快递柜使用情况如下*****|" << endl;
+	cout << "\t\t\t\t\t ----------------------------" << endl;
 	box[boxId]->printBoxStation();
 	return;
 }
