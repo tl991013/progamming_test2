@@ -74,12 +74,12 @@ void savePostman() {
 	fw.open("D:\\postman.txt", ios::out);
 	if (fw.is_open()) {
 		for (int i = 0; postman[i] != NULL; i++) {
-			fw << postman[i]->getId() << "\t" 
-				<< postman[i]->getTel() << "\t" 
+			fw << postman[i]->getId() << "\t"
+				<< postman[i]->getTel() << "\t"
 				<< postman[i]->getName() << "\t"
-				<< postman[i]->getPostId() << "\t" 
-				<< postman[i]->getPosition() << "\t" 
-				<< postman[i]->getPassWord()<< "\n";
+				<< postman[i]->getPostId() << "\t"
+				<< postman[i]->getPosition() << "\t"
+				<< postman[i]->getPassWord() << "\n";
 		}
 	}
 	fw.close();
@@ -90,10 +90,10 @@ void saveClient() {
 	fw.open("D:\\client.txt", ios::out);
 	if (fw.is_open()) {
 		for (int i = 0; client[i] != NULL; i++) {
-			fw << client[i]->getId() << "\t" 
-				<< client[i]->getTel() << "\t" 
+			fw << client[i]->getId() << "\t"
+				<< client[i]->getTel() << "\t"
 				<< client[i]->getName() << "\t"
-				<< client[i]->getAddress() << "\t" 
+				<< client[i]->getAddress() << "\t"
 				<< client[i]->getClintId() << "\n";
 		}
 	}
@@ -104,8 +104,8 @@ void saveGood() {
 	fw.open("D:\\goods.txt", ios::out);
 	if (fw.is_open()) {
 		for (int i = 0; goods[i] != NULL; i++) {
-			fw << goods[i]->getpId() << "\t" 
-				<< goods[i]->getrId() << "\t" 
+			fw << goods[i]->getpId() << "\t"
+				<< goods[i]->getrId() << "\t"
 				<< goods[i]->getStation() << "\n";
 		}
 	}
@@ -116,8 +116,8 @@ void saveKey() {
 	fw.open("D:\\key.txt", ios::out);
 	if (fw.is_open()) {
 		for (int i = 0; keycell[i] == NULL; i++) {
-			fw << keycell[i]->getKey() 
-				<< "\t" << keycell[i]->getGoodsId() 
+			fw << keycell[i]->getKey()
+				<< "\t" << keycell[i]->getGoodsId()
 				<< "\t" << keycell[i]->getBoxId() << "\n";
 		}
 	}
@@ -148,12 +148,12 @@ void getKeycell() {
 
 void creatNewPostman() {
 	string id1;// 身份证号
-	string tel1;// 电话 
-	string name1;// 姓名 
+	string tel1;// 电话
+	string name1;// 姓名
 	int postId1;//工号
 	string position1;//职位
 	string passWord1;//密码
-	int tt;//第几位快递员
+	int tt = 1;//第几位快递员
 
 	cout << "请准确输入身份证号码：";
 	cin >> id1;
@@ -183,29 +183,35 @@ void creatNewPostman() {
 void createGoods() {
 	string pId1;//寄件人clintid
 	string rId1;//收件人clintid
-	int station1;//状态 0：派送中 1：在柜中 2：已取出
 	long long goodsId1;
-	int i;
+	int i, j;
 	cout << "请设置寄件人（id）：";
 	cin >> pId1;
 	cout << "\n请设置收件人（id）:";
 	cin >> rId1;
 	cout << "\n请设置无物品（id）：";
 	cin >> goodsId1;
-
+	int record = 1;//记录
+	int record2 = 1;
 	for (i = 0; client[i] != NULL; i++) {
-		if (client[i]->getId() == pId1)
-			for (i = 0; client[i] != NULL; i++)
-				if (client[i]->getId() == rId1)
-					i = -1;
+		if (client[i]->getId() == pId1) {
+			for (j = 0; client[j] != NULL; j++) {
+				if (client[j]->getId() == rId1) {
+					record = -1;
+					break;
+				}
+			}
+		}
+		if (record == -1)
+			break;
 	}
 	for (i = 0; goods[i] != NULL; i++) {
-		if (goods[i]->getGoodsId() != goodsId1)
-			i = -1;
-		else
-			i = 1;
+		if (goods[i]->getGoodsId() == goodsId1) {
+			record2 = -1;
+			break;
+		}
 	}
-	if (i == -1)
+	if (record == -1 && record2 == -1)
 	{
 		for (i = 0; goods[i] != NULL; i++) {}
 		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
@@ -268,7 +274,7 @@ void Put()
 	keys.insertKey(temp);
 	cout << "已成功存入." << endl;
 	temp->sendMessage();
-	system("pause");
+
 	return;
 }
 

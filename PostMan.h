@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include"Person.h"
-class PostMan :public Person//ÓÊµİÔ±Àà
+class PostMan :public Person//é‚®é€’å‘˜ç±»
 {
 private:
-	int postId;//¹¤ºÅ
-	string position;//Ö°Î»
-	string passWord;//ÃÜÂë
+	int postId;//å·¥å·
+	string position;//èŒä½
+	string passWord;//å¯†ç 
 public:
 
 	int getPostId()const;
