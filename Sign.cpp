@@ -4,38 +4,37 @@
 int recordMenu = 1;
 int recordPostsign = 1;
 int recordWork = 1;
-//Éí·ÝµÄÑ¡Ôñ£º¿ìµÝÔ±ºÍÊÕ¼þÈË
+//èº«ä»½çš„é€‰æ‹©ï¼šå¿«é€’å‘˜å’Œæ”¶ä»¶äºº
 int Menu() {
 	while (recordMenu) {
-		cout << "*****Ö÷²Ëµ¥******" << endl << endl;
-		cout << "****0.ÍË³ö*******" << endl << endl;
-		cout << "****1.¿ìµÝÔ±*****" << endl << endl;
-		cout << "****2.ÊÕ¼þ*******" << endl << endl;
+		cout << "*****ä¸»èœå•******" << endl << endl;
+		cout << "****0.é€€å‡º*******" << endl << endl;
+		cout << "****1.å¿«é€’å‘˜*****" << endl << endl;
+		cout << "****2.æ”¶ä»¶*******" << endl << endl;
 		cout << "*****************" << endl << endl;
 		int a;
-		cout << "ÇëÑ¡Ôñ£º";
+		cout << "è¯·é€‰æ‹©ï¼š";
 		cin >> a;
 		switch (a)
 		{
 		case 0:exit(0);
 			break;
 		case 1:Sleep(1000);
-			system("cls");
 			PostSign();
 			recordMenu = 1;
 			break;
 		case 2:Sleep(1000);
-			system("cls");
 			ReceSign();
 			recordMenu = 1;
 			break;
-		default:cout << "*ÊäÈë´íÎó£¬µÈ´ýÖØÐÂÑ¡Ôñ*" << endl;
+		default:cout << "*è¾“å…¥é”™è¯¯ï¼Œç­‰å¾…é‡æ–°é€‰æ‹©*" << endl;
 			Sleep(1000);
 			system("cls");
 			recordMenu = 1;
 			break;
 		}
 	}
+	
 	return 0;
 }
 
@@ -46,30 +45,30 @@ int PostSign() {
 	string password = "";
 	while (recordPostsign)
 	{
-		cout << "*****¿ìµÝÔ±µÇÂ¼½çÃæ*****" << endl << endl;
-		cout << "*****0.ÍË³ö*************" << endl << endl;
-		cout << "*****1.ÊäÈëÕËºÅÃÜÂë*****" << endl << endl;
+		cout << "*****å¿«é€’å‘˜ç™»å½•ç•Œé¢*****" << endl << endl;
+		cout << "*****0.é€€å‡º*************" << endl << endl;
+		cout << "*****1.è¾“å…¥è´¦å·å¯†ç *****" << endl << endl;
 		cout << "************************" << endl << endl;
-		cout << "ÊäÈëÐòºÅ:";
+		cout << "è¾“å…¥åºå·:";
 		cin >> num;
 		switch (num) {
-		case 0:Sleep(1000);
+		case 0:
 			system("cls");
 			recordPostsign = 0;
 			recordMenu = 1;
 			break;
-		case 1:Sleep(1000);
+		case 1:
 			system("cls");
-			cout << "***ÊäÈëÕËºÅÃÜÂë½çÃæ***" << endl << endl;
-			cout << "******ÇëÊäÈëÕËºÅ******" << endl;
+			cout << "***è¾“å…¥è´¦å·å¯†ç ç•Œé¢***" << endl << endl;
+			cout << "******è¯·è¾“å…¥è´¦å·******" << endl;
 			cin >> id;
 			cout << endl;
-			cout << "******ÇëÊäÈëÃÜÂë******" << endl;
+			cout << "******è¯·è¾“å…¥å¯†ç ******" << endl;
 			cin >> password;
 			cout << endl;
 			recordPostsign = 1;
 			break;
-		default:cout << "*ÊäÈë´íÎó,µÈ´ýÖØÐÂÊäÈëÑ¡Ïî*" << endl;
+		default:cout << "*è¾“å…¥é”™è¯¯,ç­‰å¾…é‡æ–°è¾“å…¥é€‰é¡¹*" << endl;
 			Sleep(1000);
 			system("cls");
 			recordPostsign = 1;
@@ -77,9 +76,9 @@ int PostSign() {
 		}
 		if (num == 1) {
 			for (i = 0; i < 100; i++) {
-				if (postman[i] != NULL && id == postman[i]->getPostId()) {
+				if (postman[i] != NULL || id == postman[i]->getPostId()) {
 					if (password == postman[i]->getPassWord()) {
-						cout << "*µÇÂ¼³É¹¦*" << endl;
+						cout << "*ç™»å½•æˆåŠŸ*" << endl;
 						record = 1;
 						recordPostsign = 0;
 						Sleep(1000);
@@ -87,14 +86,14 @@ int PostSign() {
 						break;
 					}
 					else {
-						cout << "*ÃÜÂë´íÎó,ÖØÐÂµÇÂ¼*" << endl;
+						cout << "*å¯†ç é”™è¯¯,é‡æ–°ç™»å½•*" << endl;
 						Sleep(1000);
 						system("cls");
 						break;
 					}
 				}
-				if (postman[i] == NULL) {
-					cout << "*ÕËºÅ²»´æÔÚ,ÇëµÈ´ýÖØÐÂÊäÈëÑ¡Ïî*" << endl;
+				if (postman[i] == NULL||i==100) {
+					cout << "*è´¦å·ä¸å­˜åœ¨,è¯·ç­‰å¾…é‡æ–°è¾“å…¥é€‰é¡¹*" << endl;
 					recordPostsign = 1;
 					Sleep(1000);
 					system("cls");
@@ -105,13 +104,12 @@ int PostSign() {
 		if (num == 1 && record)
 			Work();
 	}
-
 	return 0;
 }
 
 int ReceSign() {
 	Check();
-	cout << "*µÈ´ý·µ»ØÖ÷²Ëµ¥*" << endl;
+	cout << "*ç­‰å¾…è¿”å›žä¸»èœå•*" << endl;
 	Sleep(3000);
 	system("cls");
 	recordMenu = 1;
@@ -122,54 +120,46 @@ int Work() {
 	int choice = -1;
 	recordWork = 1;
 	while (recordWork) {
-		cout << "******¿ìµÝÔ±²Ù×÷½çÃæ******" << endl << endl;
-		cout << "****0.ÍË³ö,·µ»ØÉÏ²ã½çÃæ***" << endl << endl;
-		cout << "****1.´æÈë¿ìµÝ************" << endl << endl;
-		cout << "****2.²éÑ¯¿ìµÝ¹ñÊ¹ÓÃÇé¿ö**" << endl << endl;
-		cout << "****3.¼ì²é¿ìµÝ************" << endl << endl;
-		cout << "****4.¿ìµÝÊÇ·ñ³¬Ê±********" << endl << endl;
+		cout << "******å¿«é€’å‘˜æ“ä½œç•Œé¢******" << endl << endl;
+		cout << "****0.é€€å‡º,è¿”å›žä¸Šå±‚ç•Œé¢***" << endl << endl;
+		cout << "****1.å­˜å…¥å¿«é€’************" << endl << endl;
+		cout << "****2.æŸ¥è¯¢å¿«é€’æŸœä½¿ç”¨æƒ…å†µ**" << endl << endl;
+		cout << "****3.æ£€æŸ¥å¿«é€’************" << endl << endl;
+		cout << "****4.å¿«é€’æ˜¯å¦è¶…æ—¶********" << endl << endl;
 		cout << "**************************" << endl << endl;
-		cout << "****ÇëÊäÈëÑ¡Ïî£º";
+		cout << "****è¯·è¾“å…¥é€‰é¡¹ï¼š";
 		cin >> choice;
 		switch (choice) {
-		case 0:Sleep(1000);
+		case 0:
 			system("cls");
 			recordWork = 0;
 			recordPostsign = 1;
 			break;
-		case 1:Sleep(1000);
+		case 1:
 			system("cls");
 			Put();
-			Sleep(1000);
 			recordWork = 1;
-			Sleep(1000);
 			system("cls");
 			break;
-		case 2:Sleep(1000);
+		case 2:
 			system("cls");
 			checkBox();
-			Sleep(1000);
 			recordWork = 1;
-			Sleep(1000);
 			system("cls");
 			break;
-		case 3:Sleep(1000);
+		case 3:
 			system("cls");
 			checkGoods();
-			Sleep(1000);
 			recordWork = 1;
-			Sleep(1000);
 			system("cls");
 			break;
-		case 4:Sleep(1000);
+		case 4:
 			system("cls");
 			checkOvertime();
-			Sleep(1000);
 			recordWork = 1;
-			Sleep(1000);
 			system("cls");
 			break;
-		default:cout << "ÊäÈë´íÎó£¬µÈ´ýÖØÐÂÊäÈë" << endl;
+		default:cout << "è¾“å…¥é”™è¯¯ï¼Œç­‰å¾…é‡æ–°è¾“å…¥" << endl;
 			Sleep(1000);
 			system("cls");
 			recordWork = 1;
