@@ -1,4 +1,4 @@
-#include "Keycell.h"
+ï»¿#include "Keycell.h"
 map<string, bool>keyMap;
 Keycell::Keycell(string k, long long gId, int bId, int inDex) :key(k), goodsId(gId), boxId(bId), index(inDex), next(NULL)
 {
@@ -10,7 +10,6 @@ void Keycell::setRandomKey()
 	char str[10];
 	while (1)
 	{
-
 		for (int i = 0; i < 6; ++i)
 		{
 			switch ((rand() % 3))
@@ -51,9 +50,9 @@ int Keycell::getGoodsId()
 
 void Keycell::sendMessage()
 {
-	cout << "¶ÌÐÅ" << endl;
-	cout << "ÄúºÃ£¬Äú±àºÅÎª" << goodsId
-		<< "µÄ¿ìµÝÒÑ¾­µ½´ï" << boxId
-		<< "ºÅ¿ìµÝ¹ñ,ÇëÒ»Ð¡Ê±ÄÚÆ¾½è" << key.c_str()
-		<< "ÁìÈ¡ÄúµÄ¿ìµÝ" << endl;
+	cout << "çŸ­ä¿¡" << endl;
+	cout << "æ‚¨å¥½ï¼Œæ‚¨ç¼–å·ä¸º" << goodsId
+		<< "çš„å¿«é€’å·²ç»åˆ°è¾¾" << boxId
+		<< "å·å¿«é€’æŸœ,è¯·ä¸€å°æ—¶å†…å‡­å€Ÿ" << key.c_str()
+		<< "é¢†å–æ‚¨çš„å¿«é€’" << endl;
 }

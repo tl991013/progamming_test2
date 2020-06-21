@@ -1,4 +1,4 @@
-#include "Key.h"
+ï»¿#include "Key.h"
 #include "Box.h"
 
 Keys::Keys()
@@ -21,11 +21,11 @@ Keycell Keys::findKey(string kkey)
 		if (p->getKey() == kkey)
 		{
 			q->next = p->next;
-			cout << "±àºÅÎª" << p->getGoodsId() 
-				<< "µÄ¿ìµÝ£¬ÔÚ" << p->getBoxId() 
-				<< "ºÅ¿ìµÝ¹ñ£¬µÚ" << p->index / Box::Boxw + 1 
-				<< "ÐÐµÚ" << p->index % Box::Boxh + 1 
-				<< "ÁÐ" << endl;
+			cout << "ç¼–å·ä¸º" << p->getGoodsId()
+				<< "çš„å¿«é€’ï¼Œåœ¨" << p->getBoxId()
+				<< "å·å¿«é€’æŸœï¼Œç¬¬" << p->index / Box::Boxw + 1
+				<< "è¡Œç¬¬" << p->index % Box::Boxh + 1
+				<< "åˆ—" << endl;
 			Keycell ret = *p;
 			delete p;
 			keyMap[kkey] = 0;
@@ -34,7 +34,7 @@ Keycell Keys::findKey(string kkey)
 		q = p;
 		p = p->next;
 	}
-	return Keycell();//ÊäÈë´íÎó£¬²éÕÒÊ§°Ü 
+	return Keycell();//è¾“å…¥é”™è¯¯ï¼ŒæŸ¥æ‰¾å¤±è´¥
 }
 
 void Keys::printKeys() const
@@ -54,11 +54,11 @@ void Keys::findGoods(long long goodsId) const
 	{
 		if (p->getGoodsId() == goodsId)
 		{
-			cout << "±àºÅÎª" << p->getGoodsId()
-				<< "µÄ¿ìµÝ£¬ÔÚ" << p->getBoxId()
-				<< "ºÅ¿ìµÝ¹ñ£¬µÚ" << p->index / Box::Boxw + 1
-				<< "ÐÐµÚ" << p->index % Box::Boxh + 1
-				<< "ÁÐ" << endl;
+			cout << "ç¼–å·ä¸º" << p->getGoodsId()
+				<< "çš„å¿«é€’ï¼Œåœ¨" << p->getBoxId()
+				<< "å·å¿«é€’æŸœï¼Œç¬¬" << p->index / Box::Boxw + 1
+				<< "è¡Œç¬¬" << p->index % Box::Boxh + 1
+				<< "åˆ—" << endl;
 			return;
 		}
 		p = p->next;

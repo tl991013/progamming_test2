@@ -1,4 +1,4 @@
-#include"Functions.h"
+﻿#include"Functions.h"
 #include"Sign.h"
 int main()
 {

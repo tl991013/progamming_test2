@@ -1,29 +1,29 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 using namespace std;
 class Box
 {
 public:
-	const static int Boxw = 3;//¹ñ¿í
-	const static int Boxh = 3;//¹ñ¸ß
+	const static int Boxw = 3;//æŸœå®½
+	const static int Boxh = 3;//æŸœé«˜
 
 private:
 	bool box[Boxh * Boxw];
 	//long long idbox[Boxh*Boxw];
-	int boxId;//¿ìµİ¹ñµÄid
-	int postId;//¹ÜÀíÈËÔ±±àºÅ
+	int boxId;//å¿«é€’æŸœçš„id
+	int postId;//ç®¡ç†äººå‘˜ç¼–å·
 
 public:
 	Box(int id, int pId);
 	int getpostId();
 	void setpostId(int a);
-	int getFreeBox()const;//Ñ°ÕÒ¿Õ¹ñ×Ó
+	int getFreeBox()const;//å¯»æ‰¾ç©ºæŸœå­
 
-	void printBox(int index)const;//Êä³ö¹ñ×ÓµÄĞĞºÍÁĞ(xxĞĞxxÁĞ¿É·ÅÈë)
+	void printBox(int index)const;//è¾“å‡ºæŸœå­çš„è¡Œå’Œåˆ—(xxè¡Œxxåˆ—å¯æ”¾å…¥)
 
 	void putBox(int index);//box[i]=1
 
 	void checkBox(int index);//box[i]=0
 
-	void printBoxStation();//²éÑ¯¹ñÊ¹ÓÃÇé¿ö
+	void printBoxStation();//æŸ¥è¯¢æŸœä½¿ç”¨æƒ…å†µ
 };
