@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include<map>
 #include<ctime>
@@ -16,7 +16,7 @@ public:
 	Keycell* next;
 	int index;
 protected:
-	string key;//ÃÜÂë
+	string key;//å¯†ç 
 	long long goodsId;
 	int boxId;
 };

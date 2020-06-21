@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include"Keycell.h"
 using namespace std;
@@ -12,12 +12,11 @@ private:
 public:
 	Keys();
 
-	void insertKey(keytype k);//ÔÚ±íÖĞ²åÈëÒ»¸ökey 
+	void insertKey(keytype k);//åœ¨è¡¨ä¸­æ’å…¥ä¸€ä¸ªkey
 
-	Keycell findKey(string kkey);//Í¨¹ıkeyÖµ²éÕÒ ,³É¹¦ºóÉ¾³ı 
+	Keycell findKey(string kkey);//é€šè¿‡keyå€¼æŸ¥æ‰¾ ,æˆåŠŸååˆ é™¤
 
-	void printKeys()const;//²âÊÔÓÃ 
+	void printKeys()const;//æµ‹è¯•ç”¨
 
-	void findGoods(long long goodsId)const;//¸ù¾İidÑ°ÕÒ¿ìµİ
-
+	void findGoods(long long goodsId)const;//æ ¹æ®idå¯»æ‰¾å¿«é€’
 };
