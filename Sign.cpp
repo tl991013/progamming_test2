@@ -85,7 +85,7 @@ int PostSign() {
 		}
 		if (num == 1) {
 			for (i = 0; i < 100; i++) {
-				if (postman[i] != NULL || id == postman[i]->getPostId()) {
+				if (postman[i] != NULL && id == postman[i]->getPostId()) {
 					if (password == postman[i]->getPassWord()) {
 						cout << "*登录成功*" << endl;
 						record = 1;

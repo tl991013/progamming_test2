@@ -177,7 +177,8 @@ void creatNewPostman() {
 	for (int i = 0; postman[i] != NULL; i++) {
 		tt = i;
 	}
-	postman[tt] = new PostMan(id1, tel1, name1, postId1, position1, passWord1);
+	postman[tt+1] = new PostMan(id1, tel1, name1, postId1, position1, passWord1);
+	savePostman();
 }
 
 void createGoods() {
@@ -189,7 +190,7 @@ void createGoods() {
 	cin >> pId1;
 	cout << "\n请设置收件人（id）:";
 	cin >> rId1;
-	cout << "\n请设置无物品（id）：";
+	cout << "\n请设置物品id：";
 	cin >> goodsId1;
 	int record1 = 1;//记录寄件人是否存在
 	int record2 = 1;//记录收件人是否存在
