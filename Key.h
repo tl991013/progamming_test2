@@ -14,7 +14,7 @@ public:
 
 	void insertKey(keytype k);//在表中插入一个key 
 
-	Keycell findKey(string kkey);//通过key值查找 ,成功后删除 
+	Keycell findKey(string kkey);//通过key值查找 ,成功后删除 。。。。。。。
 
 	void printKeys()const;//测试用 
 
