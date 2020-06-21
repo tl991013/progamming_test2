@@ -7,6 +7,7 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
+Keycell* keycell[100];
 
 void getPostMan()
 {
@@ -167,7 +168,7 @@ void creatNewPostman() {
 	cout << "\n" << "请设置密码：";
 	cin >> passWord1;
 	for (int i = 0; postman[i] != NULL; i++) {
-		if (postman[i]->getId() == id1 || postman[i]->getTel() == tel1 || postman[i]->getPostId == postId1) {
+		if (postman[i]->getId() == id1 || postman[i]->getTel() == tel1 || postman[i]->getPostId() == postId1) {
 			cout << "添加失败，请核对信息后再尝试！" << endl;
 			return;
 		}
@@ -195,7 +196,7 @@ void createGoods() {
 	for (i = 0; client[i] != NULL; i++) {
 		if (client[i]->getId() == pId1)
 			for (i = 0; client[i] != NULL; i++)
-				if (client[i]->getId == rId1)
+				if (client[i]->getId() == rId1)
 					i = -1;
 	}
 	for (i = 0; goods[i] != NULL; i++) {
@@ -267,7 +268,7 @@ void Put()
 	keys.insertKey(temp);
 	cout << "已成功存入." << endl;
 	temp->sendMessage();
-
+	system("pause");
 	return;
 }
 
