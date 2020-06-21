@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include"Person.h"
-class Client :public Person//¼Ä¼şÈËºÍÊÕ¼şÈËÀà 
+class Client :public Person//å¯„ä»¶äººå’Œæ”¶ä»¶äººç±»
 {
 private:
-	string address;//µØÖ·
-	int clintId;//¿Í»§µÄ±àºÅ 
+	string address;//åœ°å€
+	int clintId;//å®¢æˆ·çš„ç¼–å·
 
 public:
 	void setAddress(string str);

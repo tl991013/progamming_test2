@@ -1,13 +1,13 @@
-#include "Goods.h"
+﻿#include "Goods.h"
 
-void Goods::setpId(string str)
+void Goods::setpName(string str)
 {
-	pId = str;
+	pName = str;
 }
 
-void Goods::setrId(string str)
+void Goods::setrName(string str)
 {
-	rId = str;
+	rName = str;
 }
 
 void Goods::setStation(int s)
@@ -34,14 +34,14 @@ void Goods::setGoodsId(long long a)
 	goodsId = a;
 }
 
-string Goods::getpId() const
+string Goods::getpName() const
 {
-	return pId;
+	return pName;
 }
 
-string Goods::getrId() const
+string Goods::getrName() const
 {
-	return rId;
+	return rName;
 }
 
 int Goods::getStation() const
@@ -66,8 +66,8 @@ long long Goods::getGoodsId() const
 
 Goods::Goods(string a, string b, int c, long long d) :putTime(0), checkTime(0)
 {
-	setpId(a);
-	setrId(b);
+	setpName(a);
+	setrName(b);
 	setStation(c);
 	setGoodsId(d);
 }

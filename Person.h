@@ -1,12 +1,12 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 using namespace std;
-class Person//ÈËÀà£¬°üÀ¨ÈËµÄ»ù±¾ĞÅÏ¢ 
+class Person//äººç±»ï¼ŒåŒ…æ‹¬äººçš„åŸºæœ¬ä¿¡æ¯
 {
 private:
-	string id;// Éí·İÖ¤ºÅ
-	string tel;// µç»° 
-	string name;// ĞÕÃû 
+	string id;// èº«ä»½è¯å·
+	string tel;// ç”µè¯
+	string name;// å§“å
 public:
 	string getId()const;
 	string getTel()const;

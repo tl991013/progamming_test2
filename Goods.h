@@ -1,29 +1,29 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include <time.h>
 using namespace std;
 class Goods
 {
 private:
-	string pId;//¼Ä¼şÈËclintid
-	string rId;//ÊÕ¼şÈËclintid
-	int station;//×´Ì¬ 0£ºÅÉËÍÖĞ 1£ºÔÚ¹ñÖĞ 2£ºÒÑÈ¡³ö
-	long long putTime;//·ÅÈëÊ±¼ä ,0:Î´·ÅÈë  ·Ç0£º´Ó1970/1/1¿ªÊ¼µÄÃëÊı
-	long long checkTime;//È¡³öÊ±¼ä
-	long long goodsId;
+	string pName;//å¯„ä»¶äººåå­—
+	string rName;//æ”¶ä»¶äººåå­—
+	int station;//çŠ¶æ€ 0ï¼šæ´¾é€ä¸­ 1ï¼šåœ¨æŸœä¸­ 2ï¼šå·²å–å‡º
+	long long putTime;//æ”¾å…¥æ—¶é—´ ,0:æœªæ”¾å…¥  é0ï¼šä»1970/1/1å¼€å§‹çš„ç§’æ•°
+	long long checkTime;//å–å‡ºæ—¶é—´
+	long long goodsId;//å¿«é€’id
 
 public:
 	Goods(string a = "", string b = "", int c = 0, long long d = -1);
 
-	void setpId(string str);
-	void setrId(string str);
+	void setpName(string str);
+	void setrName(string str);
 	void setStation(int s);
 	void setPuttime();
 	void setChecktime();
 	void setGoodsId(long long a);
 
-	string getpId()const;
-	string getrId()const;
+	string getpName()const;
+	string getrName()const;
 	int getStation()const;
 	long long getPuttime()const;
 	long long getChecktime()const;

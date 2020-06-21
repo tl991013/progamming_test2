@@ -1,4 +1,4 @@
-#include "Client.h"
+﻿#include "Client.h"
 
 void Client::setAddress(string str)
 {
@@ -25,5 +25,3 @@ Client::Client(string a, string b, string c, string d, int e) :Person(a, b, c)
 	setAddress(d);
 	setClintId(e);
 }
-
-
