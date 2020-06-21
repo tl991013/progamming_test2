@@ -7,6 +7,7 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
+Keycell* keycell[100];
 
 void getPostMan()
 {
