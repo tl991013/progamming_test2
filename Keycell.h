@@ -14,7 +14,7 @@ public:
 	int getGoodsId();
 	void sendMessage();
 	Keycell* next;
-	int index;
+	int index;//快递位置
 protected:
 	string key;//密码
 	long long goodsId;

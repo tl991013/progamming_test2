@@ -104,8 +104,8 @@ void saveGood() {
 	fw.open("D:\\goods.txt", ios::out);
 	if (fw.is_open()) {
 		for (int i = 0; goods[i] != NULL; i++) {
-			fw << goods[i]->getpId() << "\t"
-				<< goods[i]->getrId() << "\t"
+			fw << goods[i]->getpName() << "\t"
+				<< goods[i]->getrName() << "\t"
 				<< goods[i]->getStation() << "\n";
 		}
 	}
@@ -173,7 +173,7 @@ void creatNewPostman() {
 			return;
 		}
 	}
-
+	cout << "已成功注册" << endl;
 	for (int i = 0; postman[i] != NULL; i++) {
 		tt = i;
 	}
@@ -182,27 +182,27 @@ void creatNewPostman() {
 }
 
 void createGoods() {
-	string pId1;//寄件人clintid
-	string rId1;//收件人clintid
+	string pName1;//寄件人clintid
+	string rName1;//收件人clintid
 	long long goodsId1;
 	int i, j;
 	cout << "请设置寄件人（id）：";
-	cin >> pId1;
+	cin >> pName1;
 	cout << "\n请设置收件人（id）:";
-	cin >> rId1;
+	cin >> rName1;
 	cout << "\n请设置物品id：";
 	cin >> goodsId1;
 	int record1 = 1;//记录寄件人是否存在
 	int record2 = 1;//记录收件人是否存在
 	int record3 = 1;//记录快递是否存在
 	for (i = 0; client[i] != NULL; i++) {
-		if (client[i]->getId() == pId1) {
+		if (client[i]->getId() == pName1) {
 			record1 = -1;
 			break;
 		}
 	}
 	for (j = 0; client[j] != NULL; j++) {
-		if (client[j]->getId() == rId1) {
+		if (client[j]->getId() == rName1) {
 			record2 = -1;
 			break;
 		}
@@ -216,7 +216,7 @@ void createGoods() {
 	if (record1 == -1 && record2 == -1 && record3 == -1)
 	{
 		for (i = 0; goods[i] != NULL; i++) {}
-		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
+		goods[i] = new Goods(pName1, rName1, 0, goodsId1);
 	}
 	else
 		cout << "包裹信息错误，请检查后重试";
@@ -227,8 +227,8 @@ void initial()
 	getPostMan();
 	getClient();
 	getGoods();
-	box[0] = new Box(1, 2);
-	box[1] = new Box(2, 2);
+	box[0] = new Box(1, 2);//快递柜
+	box[1] = new Box(2, 2);//设置快递柜数量为2个
 
 	keys.insertKey(new Keycell("111111", 3, 0, 0));
 	keys.insertKey(new Keycell("123456", 2, 1, 0));
