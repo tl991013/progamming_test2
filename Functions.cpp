@@ -7,7 +7,6 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
-Keycell* keycell[100];
 
 void getPostMan()
 {
@@ -68,6 +67,7 @@ void getGoods()
 	else
 		cout << "文件打开失败" << endl;
 }
+
 void savePostman() {
 	ofstream fw;
 	fw.open("D:\\postman.txt", ios::out);
@@ -223,7 +223,7 @@ void initial()
 
 	keys.insertKey(new Keycell("111111", 3, 0, 0));
 	keys.insertKey(new Keycell("123456", 2, 1, 0));
-	goods[3]->setPuttime();
+
 	goods[3]->putGoods();
 	box[0]->putBox(0);
 }
@@ -340,16 +340,21 @@ void checkGoods()
 
 void checkOvertime()
 {
+	int record = 1;
 	int i;
 	time_t seconds;
 	seconds = time(NULL);
 	long long a = seconds;
 	cout << "超时快递：" << endl;
-	for (i = 0; i < 100; i++)
+	for (i = 0; i < 100; i++) {
+		if (goods[i] == NULL)//
+			break;
 		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//10s即过期
 		{
 			keys.findGoods(goods[i]->getGoodsId());
+			record = 0;
 		}
-	if (i == 100)
+	}
+	if (record)
 		cout << "不存在超时快递" << endl;
 }

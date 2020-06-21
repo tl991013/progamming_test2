@@ -4,25 +4,24 @@ int main()
 {
 	initial();
 	Menu();
-	//initial();
-	//int op;
-	//while (1)
-	//{
-	//	cout << "ÊäÈë1´æ¿ìµÝ£¬2È¡¿ìµÝ£¬3²éÑ¯¿ìµÝ¹ñÊ¹ÓÃÇé¿ö£¬4²éÑ¯»õÎï´æÈ¡Çé¿ö£¬5²éÑ¯¹ýÆÚ¿ìµÝ" << endl;
-	//	cin >> op;
-	//	if (op == 1)
-	//		Put();
-	//	else if (op == 2)
-	//		Check();
-	//	else if (op == 3)
-	//		checkBox();
-	//	else if (op == 4)
-	//		checkGoods();
-	//	else if (op == 5)
-	//		checkOvertime();
-	//	system("pause");
-	//	system("cls");
-	//}
+	/*int op;
+	while (1)
+	{
+		cout << "è¾“å…¥1å­˜å¿«é€’ï¼Œ2å–å¿«é€’ï¼Œ3æŸ¥è¯¢å¿«é€’æŸœä½¿ç”¨æƒ…å†µï¼Œ4æŸ¥è¯¢è´§ç‰©å­˜å–æƒ…å†µï¼Œ5æŸ¥è¯¢è¿‡æœŸå¿«é€’" << endl;
+		cin >> op;
+		if (op == 1)
+			Put();
+		else if (op == 2)
+			Check();
+		else if (op == 3)
+			checkBox();
+		else if (op == 4)
+			checkGoods();
+		else if (op == 5)
+			checkOvertime();
+		system("pause");
+		system("cls");
+	}*/
 
 	return 0;
 }
