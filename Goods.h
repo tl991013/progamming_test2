@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 #include <time.h>
 using namespace std;
 class Goods
 {
 private:
-	string pId;//¼Ä¼şÈËclintid
-	string rId;//ÊÕ¼şÈËclintid
-	int station;//×´Ì¬ 0£ºÅÉËÍÖĞ 1£ºÔÚ¹ñÖĞ 2£ºÒÑÈ¡³ö
-	long long putTime;//·ÅÈëÊ±¼ä ,0:Î´·ÅÈë  ·Ç0£º´Ó1970/1/1¿ªÊ¼µÄÃëÊı
-	long long checkTime;//È¡³öÊ±¼ä
+	string pId;//å¯„ä»¶äººclintid
+	string rId;//æ”¶ä»¶äººclintid
+	int station;//çŠ¶æ€ 0ï¼šæ´¾é€ä¸­ 1ï¼šåœ¨æŸœä¸­ 2ï¼šå·²å–å‡º
+	long long putTime;//æ”¾å…¥æ—¶é—´ ,0:æœªæ”¾å…¥  é0ï¼šä»1970/1/1å¼€å§‹çš„ç§’æ•°
+	long long checkTime;//å–å‡ºæ—¶é—´
 	long long goodsId;
 
 public:

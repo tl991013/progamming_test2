@@ -1,4 +1,4 @@
-#include "Box.h"
+ï»¿#include "Box.h"
 
 int Box::getpostId()
 {
@@ -28,7 +28,9 @@ int Box::getFreeBox() const
 
 void Box::printBox(int index) const
 {
-	printf("µÚ%dÐÐµÚ%dÁÐµÄ¹ñ×Ó¿É·ÅÈë\n", index / Boxw + 1, index % Boxw + 1);
+	cout << "ç¬¬" << index / Boxw + 1
+		<< "è¡Œç¬¬" << index % Boxw + 1
+		<< "åˆ—çš„æŸœå­å¯æ”¾å…¥" << endl;
 }
 
 void Box::putBox(int index)
@@ -43,8 +45,7 @@ void Box::checkBox(int index)
 
 void Box::printBoxStation()
 {
-
-	//»­³ö3*3µÄ·½¸ñ
+	//ç”»å‡º3*3çš„æ–¹æ ¼
 	for (int i = 0; i < Boxh; i++)
 	{
 		for (int j = 0; j < Boxw; j++)

@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+Ôªø#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include"Functions.h"
 using namespace std;
@@ -7,6 +7,7 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
+Keycell* keycell[100];
 
 void getPostMan()
 {
@@ -25,7 +26,7 @@ void getPostMan()
 		fio.close();
 	}
 	else
-		cout << "Œƒº˛¥Úø™ ß∞‹." << endl;
+		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•." << endl;
 }
 
 void getClient()
@@ -45,7 +46,7 @@ void getClient()
 		fio.close();
 	}
 	else
-		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
+		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•" << endl;
 }
 
 void getGoods()
@@ -65,8 +66,160 @@ void getGoods()
 		fio.close();
 	}
 	else
-		cout << "Œƒº˛¥Úø™ ß∞‹" << endl;
+		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•" << endl;
 }
+
+void savePostman() {
+	ofstream fw;
+	fw.open("D:\\postman.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; postman[i] != NULL; i++) {
+			fw << postman[i]->getId() << "\t"
+				<< postman[i]->getTel() << "\t"
+				<< postman[i]->getName() << "\t"
+				<< postman[i]->getPostId() << "\t"
+				<< postman[i]->getPosition() << "\t"
+				<< postman[i]->getPassWord() << "\n";
+		}
+	}
+	fw.close();
+}
+
+void saveClient() {
+	ofstream fw;
+	fw.open("D:\\client.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; client[i] != NULL; i++) {
+			fw << client[i]->getId() << "\t"
+				<< client[i]->getTel() << "\t"
+				<< client[i]->getName() << "\t"
+				<< client[i]->getAddress() << "\t"
+				<< client[i]->getClintId() << "\n";
+		}
+	}
+}
+
+void saveGood() {
+	ofstream fw;
+	fw.open("D:\\goods.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; goods[i] != NULL; i++) {
+			fw << goods[i]->getpId() << "\t"
+				<< goods[i]->getrId() << "\t"
+				<< goods[i]->getStation() << "\n";
+		}
+	}
+}
+
+void saveKey() {
+	ofstream fw;
+	fw.open("D:\\key.txt", ios::out);
+	if (fw.is_open()) {
+		for (int i = 0; keycell[i] == NULL; i++) {
+			fw << keycell[i]->getKey()
+				<< "\t" << keycell[i]->getGoodsId()
+				<< "\t" << keycell[i]->getBoxId() << "\n";
+		}
+	}
+	fw.close();
+}
+
+void getKeycell() {
+	string a;
+	long long b;
+	int c;
+	ifstream fr;
+	fr.open("key.txt", ios::in);
+	if (fr.is_open()) {
+		for (int i = 0; i < 100; i++) {
+			fr >> a >> b >> c;
+			keycell[i] = new Keycell(a, b, c, -1);
+			if (fr.eof())
+				break;
+		}
+		fr.close();
+	}
+	else
+		cout << "Êñá‰ª∂ÊâìÂºÄÂ§±Ë¥•" << endl;
+	for (int i = 0; keycell[i] != NULL; i++) {
+		keys.insertKey(keycell[i]);
+	}
+}
+
+void creatNewPostman() {
+	string id1;// Ë∫´‰ªΩËØÅÂè∑
+	string tel1;// ÁîµËØù
+	string name1;// ÂßìÂêç
+	int postId1;//Â∑•Âè∑
+	string position1;//ËÅå‰Ωç
+	string passWord1;//ÂØÜÁ†Å
+	int tt = 1;//Á¨¨Âá†‰ΩçÂø´ÈÄíÂëò
+
+	cout << "ËØ∑ÂáÜÁ°ÆËæìÂÖ•Ë∫´‰ªΩËØÅÂè∑Á†ÅÔºö";
+	cin >> id1;
+	cout << "\n" << "ËØ∑ËæìÂÖ•ÊâãÊú∫Âè∑Á†ÅÔºö";
+	cin >> tel1;
+	cout << "\n" << "ËØ∑ËæìÂÖ•ÂßìÂêçÔºö";
+	cin >> name1;
+	cout << "\n" << "ËØ∑ËæìÂÖ•Â∑•Âè∑Ôºö";
+	cin >> postId1;
+	cout << "\n" << "ËØ∑ËÆæÁΩÆËÅå‰ΩçÔºö";
+	cin >> position1;
+	cout << "\n" << "ËØ∑ËÆæÁΩÆÂØÜÁ†ÅÔºö";
+	cin >> passWord1;
+	for (int i = 0; postman[i] != NULL; i++) {
+		if (postman[i]->getId() == id1 || postman[i]->getTel() == tel1 || postman[i]->getPostId() == postId1) {
+			cout << "Ê∑ªÂä†Â§±Ë¥•ÔºåËØ∑Ê†∏ÂØπ‰ø°ÊÅØÂêéÂÜçÂ∞ùËØïÔºÅ" << endl;
+			return;
+		}
+	}
+
+	for (int i = 0; postman[i] != NULL; i++) {
+		tt = i;
+	}
+	postman[tt] = new PostMan(id1, tel1, name1, postId1, position1, passWord1);
+}
+
+void createGoods() {
+	string pId1;//ÂØÑ‰ª∂‰∫∫clintid
+	string rId1;//Êî∂‰ª∂‰∫∫clintid
+	long long goodsId1;
+	int i, j;
+	cout << "ËØ∑ËÆæÁΩÆÂØÑ‰ª∂‰∫∫ÔºàidÔºâÔºö";
+	cin >> pId1;
+	cout << "\nËØ∑ËÆæÁΩÆÊî∂‰ª∂‰∫∫ÔºàidÔºâ:";
+	cin >> rId1;
+	cout << "\nËØ∑ËÆæÁΩÆÊó†Áâ©ÂìÅÔºàidÔºâÔºö";
+	cin >> goodsId1;
+	int record = 1;//ËÆ∞ÂΩï
+	int record2 = 1;
+	for (i = 0; client[i] != NULL; i++) {
+		if (client[i]->getId() == pId1) {
+			for (j = 0; client[j] != NULL; j++) {
+				if (client[j]->getId() == rId1) {
+					record = -1;
+					break;
+				}
+			}
+		}
+		if (record == -1)
+			break;
+	}
+	for (i = 0; goods[i] != NULL; i++) {
+		if (goods[i]->getGoodsId() == goodsId1) {
+			record2 = -1;
+			break;
+		}
+	}
+	if (record == -1 && record2 == -1)
+	{
+		for (i = 0; goods[i] != NULL; i++) {}
+		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
+	}
+	else
+		cout << "ÂåÖË£π‰ø°ÊÅØÈîôËØØÔºåËØ∑Ê£ÄÊü•ÂêéÈáçËØï";
+}
+
 void initial()
 {
 	getPostMan();
@@ -77,41 +230,41 @@ void initial()
 
 	keys.insertKey(new Keycell("111111", 3, 0, 0));
 	keys.insertKey(new Keycell("123456", 2, 1, 0));
-	goods[3]->setPuttime();
+
 	goods[3]->putGoods();
 	box[0]->putBox(0);
 }
 
 void Put()
 {
-	// ‰»Î”√ªß√˚∫Õ√‹¬Î£¨¬‘
+	//ËæìÂÖ•Áî®Êà∑ÂêçÂíåÂØÜÁ†ÅÔºåÁï•
 	int boxId;
 	int freeIndex;
 	long long goodsId;
-	cout << " ‰»Îµ±«∞øÏµ›πÒ±‡∫≈" << endl;
+	cout << "ËæìÂÖ•ÂΩìÂâçÂø´ÈÄíÊüúÁºñÂè∑" << endl;
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << " ‰»Î¥ÌŒÛ" << endl;
+		cout << "ËæìÂÖ•ÈîôËØØ" << endl;
 		return;
 	}
 	freeIndex = box[boxId]->getFreeBox();
 	if (freeIndex == -1)
 	{
-		cout << "¥ÀπÒ“—¬˙£¨«Îªª“ª∏ˆ" << endl;
+		cout << "Ê≠§ÊüúÂ∑≤Êª°ÔºåËØ∑Êç¢‰∏Ä‰∏™" << endl;
 		return;
 	}
 	box[boxId]->printBox(freeIndex);
-	cout << "«Î ‰»Î“™∑≈»ÎµƒøÏµ›±‡∫≈." << endl;
+	cout << "ËØ∑ËæìÂÖ•Ë¶ÅÊîæÂÖ•ÁöÑÂø´ÈÄíÁºñÂè∑." << endl;
 	cin >> goodsId;
 	if (goodsId < 0 || goodsId>3)
 	{
-		cout << "≤ª¥Ê‘⁄¥ÀøÏµ›£¨«Î÷ÿ–¬ ‰»Î" << endl;
+		cout << "‰∏çÂ≠òÂú®Ê≠§Âø´ÈÄíÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
 		return;
 	}
 	if (goods[goodsId]->getStation() != 0)
 	{
-		cout << "¥ÀøÏµ›“—∑≈»ÎªÚ“—»°≥ˆ£¨«Î÷ÿ–¬ ‰»Î" << endl;
+		cout << "Ê≠§Âø´ÈÄíÂ∑≤ÊîæÂÖ•ÊàñÂ∑≤ÂèñÂá∫ÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
 		return;
 	}
 	goods[goodsId]->putGoods();
@@ -119,7 +272,7 @@ void Put()
 	Keycell* temp = new Keycell("", goodsId, boxId, freeIndex);
 	temp->setRandomKey();
 	keys.insertKey(temp);
-	cout << "“—≥…π¶¥Ê»Î." << endl;
+	cout << "Â∑≤ÊàêÂäüÂ≠òÂÖ•." << endl;
 	temp->sendMessage();
 
 	return;
@@ -129,30 +282,30 @@ void Check()
 {
 	string key;
 	Keycell temp;
-	cout << "«Î ‰»Î√‹¬Î" << endl;
+	cout << "ËØ∑ËæìÂÖ•ÂØÜÁ†Å" << endl;
 	cin >> key;
 	temp = keys.findKey(key);
 	if (temp.getKey() == "")
 	{
-		cout << " ‰»Î¥ÌŒÛ£¨≤ª¥Ê‘⁄¥À√‹¬Î£¨«ÎºÏ≤È «∑Ò ‰»Î¥ÌŒÛ" << endl;
+		cout << "ËæìÂÖ•ÈîôËØØÔºå‰∏çÂ≠òÂú®Ê≠§ÂØÜÁ†ÅÔºåËØ∑Ê£ÄÊü•ÊòØÂê¶ËæìÂÖ•ÈîôËØØ" << endl;
 		return;
 	}
 	box[temp.getBoxId()]->checkBox(temp.index);
 	goods[temp.getGoodsId()]->checkGoods();
-	cout << "»°º˛≥…π¶" << endl;
+	cout << "Âèñ‰ª∂ÊàêÂäü" << endl;
 }
 
 void checkBox()
 {
 	int boxId;
-	cout << " ‰»Îµ±«∞øÏµ›πÒ±‡∫≈" << endl;
+	cout << "ËæìÂÖ•ÂΩìÂâçÂø´ÈÄíÊüúÁºñÂè∑" << endl;
 	cin >> boxId;
 	if (boxId > 1 || boxId < 0)
 	{
-		cout << " ‰»Î¥ÌŒÛ" << endl;
+		cout << "ËæìÂÖ•ÈîôËØØ" << endl;
 		return;
 	}
-	cout << "øÏµ›πÒ π”√«Èøˆ»Áœ¬" << endl;
+	cout << "Âø´ÈÄíÊüú‰ΩøÁî®ÊÉÖÂÜµÂ¶Ç‰∏ã" << endl;
 	box[boxId]->printBoxStation();
 	return;
 }
@@ -160,11 +313,11 @@ void checkBox()
 void checkGoods()
 {
 	int goodsId;
-	cout << "«Î ‰»ÎøÏµ›±‡∫≈" << endl;
+	cout << "ËØ∑ËæìÂÖ•Âø´ÈÄíÁºñÂè∑" << endl;
 	cin >> goodsId;
 	if (goodsId < 0 || goodsId>3)
 	{
-		cout << "≤ª¥Ê‘⁄¥ÀøÏµ›£¨«Î÷ÿ–¬ ‰»Î" << endl;
+		cout << "‰∏çÂ≠òÂú®Ê≠§Âø´ÈÄíÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•" << endl;
 		return;
 	}
 	if (goods[goodsId]->getStation() == 2)
@@ -173,9 +326,9 @@ void checkGoods()
 
 		seconds = time(NULL);
 		long long a = seconds;
-		cout << "±‡∫≈Œ™" << goodsId
-			<< "µƒøÏµ›“—æ≠‘⁄" << a - goods[goodsId]->getChecktime()
-			<< "√Î«∞±ª»°◊ﬂ" << endl;
+		cout << "ÁºñÂè∑‰∏∫" << goodsId
+			<< "ÁöÑÂø´ÈÄíÂ∑≤ÁªèÂú®" << a - goods[goodsId]->getChecktime()
+			<< "ÁßíÂâçË¢´ÂèñËµ∞" << endl;
 		return;
 	}
 
@@ -187,23 +340,28 @@ void checkGoods()
 
 	else
 	{
-		cout << "¥ÀøÏµ›≤¢Œ¥µΩ¥ÔøÏµ›πÒ" << endl;
+		cout << "Ê≠§Âø´ÈÄíÂπ∂Êú™Âà∞ËææÂø´ÈÄíÊüú" << endl;
 		return;
 	}
 }
 
 void checkOvertime()
 {
+	int record = 1;
 	int i;
 	time_t seconds;
 	seconds = time(NULL);
 	long long a = seconds;
-	cout << "≥¨ ±øÏµ›£∫" << endl;
-	for (i = 0; i < 100; i++)
-		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//10sº¥π˝∆⁄
+	cout << "Ë∂ÖÊó∂Âø´ÈÄíÔºö" << endl;
+	for (i = 0; i < 100; i++) {
+		if (goods[i] == NULL)//
+			break;
+		if (goods[i]->getStation() == 1 && a - goods[i]->getPuttime() >= 10)//10sÂç≥ËøáÊúü
 		{
 			keys.findGoods(goods[i]->getGoodsId());
+			record = 0;
 		}
-	if (i == 100)
-		cout << "≤ª¥Ê‘⁄≥¨ ±øÏµ›" << endl;
+	}
+	if (record)
+		cout << "‰∏çÂ≠òÂú®Ë∂ÖÊó∂Âø´ÈÄí" << endl;
 }
