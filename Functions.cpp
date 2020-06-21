@@ -127,13 +127,13 @@ void saveKey() {
 void getKeycell() {
 	string a;
 	long long b;
-	int c;
+	int c,d;
 	ifstream fr;
 	fr.open("key.txt", ios::in);
 	if (fr.is_open()) {
 		for (int i = 0; i < 100; i++) {
-			fr >> a >> b >> c;
-			keycell[i] = new Keycell(a, b, c, -1);
+			fr >> a >> b >> c>>d;
+			keycell[i] = new Keycell(a, b, c, d);
 			if (fr.eof())
 				break;
 		}
