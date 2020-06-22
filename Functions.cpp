@@ -7,7 +7,6 @@ Client* client[100];
 Goods* goods[100];
 Box* box[100];
 Keys keys;
-Keycell* keycell[100];
 
 void getPostMan()
 {
@@ -76,9 +75,10 @@ void getKeycell() {
 	ifstream fr;
 	fr.open("D:\\key.txt", ios::in);
 	if (fr.is_open()) {
-		for (int i = 0; i < 100; i++) {
+		while (1) 
+		{
 			fr >> a >> b >> c >> d;
-			keycell[i] = new Keycell(a, b, c, d);
+			keys.insertKey(new Keycell(a, b, c, d));
 			if (fr.eof())
 				break;
 		}
@@ -86,9 +86,6 @@ void getKeycell() {
 	}
 	else
 		cout << "文件key打开失败" << endl;
-	for (int i = 0; keycell[i] != NULL; i++) {
-		keys.insertKey(keycell[i]);
-	}
 }
 
 void savePostman() {
@@ -150,6 +147,7 @@ void saveGood() {
 
 void saveKey() {
 	ofstream fw;
+	int i = 0;
 	fw.open("D:\\key.txt", ios::out);
 	if (fw.is_open()) {
 		/*
@@ -164,8 +162,11 @@ void saveKey() {
 		p=p->next;
 		while (p->next != NULL)
 		{
-			fw << p->getKey() << ' ' << p->getGoodsId() << ' ' << p->getBoxId() << ' ' << p->index << endl;
+			if (i != 0)
+				fw << endl;
+			fw << p->getKey() << ' ' << p->getGoodsId() << ' ' << p->getBoxId() << ' ' << p->index;
 			p=p->next;
+			i++;
 		}
 		fw.close();
 	}
@@ -318,6 +319,8 @@ void Check()
 	box[temp.getBoxId()]->checkBox(temp.index);
 	goods[temp.getGoodsId()]->checkGoods();
 	cout << "取件成功" << endl;
+	saveGood();
+	saveKey();
 }
 
 void checkBox()
