@@ -7,9 +7,8 @@ class Keys
 	typedef Keycell* keytype;
 	typedef Keycell* Head;
 private:
-	Head head;
-
 public:
+	Head head;
 	Keys();
 
 	void insertKey(keytype k);//鍦ㄨ〃涓彃鍏ヤ竴涓猭ey
