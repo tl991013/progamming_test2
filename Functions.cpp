@@ -211,14 +211,12 @@ void creatNewPostman() {
 void createGoods() {
 	string pName1;//寄件人clintid
 	string rName1;//收件人clintid
-	long long goodsId1;
+	long long goodsId1=0;
 	int i, j;
-	cout << "请设置寄件人（id）：";
+	cout << "请输入寄件人（id）：";
 	cin >> pName1;
-	cout << "\n请设置收件人（id）:";
+	cout << "\n请输入收件人（id）:";
 	cin >> rName1;
-	cout << "\n请设置物品id：";
-	cin >> goodsId1;
 	int record1 = 1;//记录寄件人是否存在
 	int record2 = 1;//记录收件人是否存在
 	int record3 = 1;//记录快递是否存在
@@ -235,17 +233,14 @@ void createGoods() {
 		}
 	}
 	for (i = 0; goods[i] != NULL; i++) {
-		if (goods[i]->getGoodsId() == goodsId1) {
-			record3 = -1;
-			break;
-		}
 	}
-	if (record1 == -1 && record2 == -1 && record3 == -1)
+	goodsId1 = (long long)i + 1;
+	if (record1 == -1 && record2 == -1)
 	{
 		for (i = 0; goods[i] != NULL; i++) {}
 		goods[i] = new Goods(pName1, rName1, 0, goodsId1);
 		saveGood();
-		cout << "包裹成功储存" << endl;
+		cout << "新建包裹成功" << endl;
 		system("pause");
 	}
 	else
