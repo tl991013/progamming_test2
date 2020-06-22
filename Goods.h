@@ -5,8 +5,8 @@ using namespace std;
 class Goods
 {
 private:
-	string pName;//寄件人名字
-	string rName;//收件人名字
+	string pId;//寄件人名字
+	string rId;//收件人名字
 	int station;//状态 0：派送中 1：在柜中 2：已取出
 	long long putTime;//放入时间 ,0:未放入  非0：从1970/1/1开始的秒数
 	long long checkTime;//取出时间

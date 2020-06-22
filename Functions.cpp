@@ -17,10 +17,10 @@ void getPostMan()
 	{
 		for (int i = 0; i < 100; i++)
 		{
-			fio >> a >> b >> c >> d >> e >> f;
-			postman[i] = new PostMan(a, b, c, d, e, f);
 			if (fio.eof())
 				break;
+			fio >> a >> b >> c >> d >> e >> f;
+			postman[i] = new PostMan(a, b, c, d, e, f);
 		}
 		fio.close();
 	}
@@ -37,10 +37,10 @@ void getClient()
 	{
 		for (int i = 0; i < 100; i++)
 		{
-			fio >> a >> b >> c >> d >> e;
-			client[i] = new Client(a, b, c, d, e);
 			if (fio.eof())
 				break;
+			fio >> a >> b >> c >> d >> e;
+			client[i] = new Client(a, b, c, d, e);
 		}
 		fio.close();
 	}
@@ -57,10 +57,10 @@ void getGoods()
 	{
 		for (int i = 0; i < 100; i++)
 		{
-			fio >> a >> b >> c >> d;
-			goods[i] = new Goods(a, b, c, d);
 			if (fio.eof())
 				break;
+			fio >> a >> b >> c >> d;
+			goods[i] = new Goods(a, b, c, d);
 		}
 		fio.close();
 	}
@@ -77,10 +77,10 @@ void getKeycell() {
 	if (fr.is_open()) {
 		while (1) 
 		{
-			fr >> a >> b >> c >> d;
-			keys.insertKey(new Keycell(a, b, c, d));
 			if (fr.eof())
 				break;
+			fr >> a >> b >> c >> d;
+			keys.insertKey(new Keycell(a, b, c, d));
 		}
 		fr.close();
 	}
@@ -160,7 +160,7 @@ void saveKey() {
 		*/
 		Keycell *p=keys.head;
 		p=p->next;
-		while (p->next != NULL)
+		while (p != NULL)
 		{
 			if (i != 0)
 				fw << endl;
@@ -210,36 +210,36 @@ void creatNewPostman() {
 }
 
 void createGoods() {
-	string pName1;//寄件人clintid
-	string rName1;//收件人clintid
+	string pId1;//寄件人clintid
+	string rId1;//收件人clintid
 	long long goodsId1=0;
 	int i, j;
 	cout << "请输入寄件人（id）：";
-	cin >> pName1;
+	cin >> pId1;
 	cout << "\n请输入收件人（id）:";
-	cin >> rName1;
+	cin >> rId1;
 	int record1 = 1;//记录寄件人是否存在
 	int record2 = 1;//记录收件人是否存在
 	int record3 = 1;//记录快递是否存在
 	for (i = 0; client[i] != NULL; i++) {
-		if (client[i]->getId() == pName1) {
+		if (client[i]->getId() == pId1) {
 			record1 = -1;
 			break;
 		}
 	}
 	for (j = 0; client[j] != NULL; j++) {
-		if (client[j]->getId() == rName1) {
+		if (client[j]->getId() == rId1) {
 			record2 = -1;
 			break;
 		}
 	}
 	for (i = 0; goods[i] != NULL; i++) {
 	}
-	goodsId1 = (long long)i + 1;
+	goodsId1 = (long long)i;
 	if (record1 == -1 && record2 == -1)
 	{
 		for (i = 0; goods[i] != NULL; i++) {}
-		goods[i] = new Goods(pName1, rName1, 0, goodsId1);
+		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
 		saveGood();
 		cout << "新建包裹成功" << endl;
 		system("pause");
@@ -281,12 +281,8 @@ void Put()
 	box[boxId]->printBox(freeIndex);
 	cout << "请输入要放入的快递编号." << endl;
 	cin >> goodsId;
-	if (goodsId < 0 || goodsId>3)
-	{
-		cout << "不存在此快递，请重新输入" << endl;
-		return;
-	}
-	if (goods[goodsId]->getStation() != 0)
+	
+	if (goods[goodsId]==NULL||goods[goodsId]->getStation() != 0)
 	{
 		cout << "此快递已放入或已取出，请重新输入" << endl;
 		return;

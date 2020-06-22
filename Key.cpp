@@ -3,11 +3,13 @@
 
 Keys::Keys()
 {
-	head = new Keycell();
+	head = new Keycell;
 }
 
 void Keys::insertKey(keytype k)
 {
+	if(head==NULL)
+
 	k->next = head->next;
 	head->next = k;
 }

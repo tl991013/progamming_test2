@@ -2,12 +2,12 @@
 
 void Goods::setpName(string str)
 {
-	pName = str;
+	pId = str;
 }
 
 void Goods::setrName(string str)
 {
-	rName = str;
+	rId = str;
 }
 
 void Goods::setStation(int s)
@@ -36,12 +36,12 @@ void Goods::setGoodsId(long long a)
 
 string Goods::getpName() const
 {
-	return pName;
+	return pId;
 }
 
 string Goods::getrName() const
 {
-	return rName;
+	return rId;
 }
 
 int Goods::getStation() const
