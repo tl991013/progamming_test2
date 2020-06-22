@@ -8,8 +8,6 @@ Keys::Keys()
 
 void Keys::insertKey(keytype k)
 {
-	if(head==NULL)
-
 	k->next = head->next;
 	head->next = k;
 }

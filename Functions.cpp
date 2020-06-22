@@ -77,10 +77,12 @@ void getKeycell() {
 	if (fr.is_open()) {
 		while (1) 
 		{
+			fr >> a;
 			if (fr.eof())
 				break;
-			fr >> a >> b >> c >> d;
+			fr >> b >> c >> d;
 			keys.insertKey(new Keycell(a, b, c, d));
+			box[c]->putBox(d);
 		}
 		fr.close();
 	}
@@ -150,14 +152,6 @@ void saveKey() {
 	int i = 0;
 	fw.open("D:\\key.txt", ios::out);
 	if (fw.is_open()) {
-		/*
-		for (int i = 0; keycell[i] == NULL; i++) {
-			fw << keycell[i]->getKey()
-				<< "\t" << keycell[i]->getGoodsId()
-				<< "\t" << keycell[i]->getBoxId()
-				<< "\t" << keycell[i]->index << "\n";
-		}
-		*/
 		Keycell *p=keys.head;
 		p=p->next;
 		while (p != NULL)
@@ -250,13 +244,12 @@ void createGoods() {
 
 void initial()
 {
+	box[0] = new Box(1, 2);//快递柜
+	box[1] = new Box(2, 2);//设置快递柜数量为2个
 	getPostMan();
 	getClient();
 	getGoods();
 	getKeycell();
-	box[0] = new Box(1, 2);//快递柜
-	box[1] = new Box(2, 2);//设置快递柜数量为2个
-
 }
 
 void Put()
@@ -343,11 +336,6 @@ void checkGoods()
 	int goodsId;
 	cout << "请输入快递编号" << endl;
 	cin >> goodsId;
-	if (goodsId < 0 || goodsId>3)
-	{
-		cout << "不存在此快递，请重新输入" << endl;
-		return;
-	}
 	if (goods[goodsId]->getStation() == 2)
 	{
 		time_t seconds;
