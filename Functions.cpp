@@ -227,12 +227,13 @@ void createGoods() {
 			break;
 		}
 	}
+
 	for (i = 0; goods[i] != NULL; i++) {
 	}
 	goodsId1 = (long long)i;
+
 	if (record1 == -1 && record2 == -1)
 	{
-		for (i = 0; goods[i] != NULL; i++) {}
 		goods[i] = new Goods(pId1, rId1, 0, goodsId1);
 		saveGood();
 		cout << "新建包裹成功" << endl;
@@ -336,6 +337,11 @@ void checkGoods()
 	int goodsId;
 	cout << "请输入快递编号" << endl;
 	cin >> goodsId;
+	if (goods[goodsId] == NULL)
+	{
+		cout << "没有这个快递!" << endl;
+		return;
+	}
 	if (goods[goodsId]->getStation() == 2)
 	{
 		time_t seconds;
@@ -347,13 +353,11 @@ void checkGoods()
 			<< "秒前被取走" << endl;
 		return;
 	}
-
 	else if (goods[goodsId]->getStation() == 1)
 	{
 		keys.findGoods(goodsId);
 		return;
 	}
-
 	else
 	{
 		cout << "此快递并未到达快递柜" << endl;
