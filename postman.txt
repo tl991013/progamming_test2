@@ -1,0 +1,4 @@
+666666	1803	Liu	0	worker	123
+777777	1804	Tian	1	manager	123
+888888	1802	Wang	2	worker	123
+999999	1145	Gu	3	worker	123
